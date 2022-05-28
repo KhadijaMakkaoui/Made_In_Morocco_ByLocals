@@ -1,0 +1,15 @@
+{
+    "name": "youcode/made_in_morocco_by-locals",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [{
+        "name": "Khadija MAKKAOUI",
+        "email": "makkaoui.khadija44@gmail.com"
+    }],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
