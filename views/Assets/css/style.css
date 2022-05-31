@@ -63,6 +63,13 @@
         height: 61vh;
     }
     
+    .img-form-vendeur {
+        background-image: url(../images/forms-img.jpg);
+        background-position: center;
+        background-size: cover;
+        height: 82vh;
+    }
+    
     .mission img {
         height: 100vh;
     }
