@@ -16,6 +16,10 @@
         background-color: #8F855E;
     }
     
+    .fourth-color {
+        background-color: #FAF6E9;
+    }
+    
     .link-color {
         color: #8F855E;
     }
@@ -45,15 +49,15 @@
     }
     
     .index .image-head {
-        background-image: url(./Assets/images/headign-img.jpg);
+        background-image: url(../images/headign-img.jpg);
     }
     
     .index .image-dec1 {
-        background-image: url(./Assets/images/lamps-fes.jpg);
+        background-image: url(../images/lamps-fes.jpg);
     }
     
     .index .image-dec2 {
-        background-image: url(./Assets/images/tapis-fes.jpg);
+        background-image: url(../images/tapis-fes.jpg);
     }
     
     .img-form {
@@ -79,7 +83,7 @@
     }
     
     .categories .image-head {
-        background-image: url(./Assets/images/categories.jpg);
+        background-image: url(../images/categories.jpg);
     }
     
     .categories .mask {
@@ -109,6 +113,21 @@
     }
     
     .login .mask-c {
+        background-color: rgba(0, 0, 0, 0.422);
+        height: 100%;
+    }
+    
+    .panier .image-head {
+        background-image: url(../images/panier.jpg);
+    }
+    
+    .panier .section-image {
+        height: 50vh;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .panier .mask-c {
         background-color: rgba(0, 0, 0, 0.422);
         height: 100%;
     }
