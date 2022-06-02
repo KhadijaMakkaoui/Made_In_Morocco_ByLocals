@@ -16,6 +16,10 @@
         background-color: #8F855E;
     }
     
+    .fourth-color {
+        background-color: #FAF6E9;
+    }
+    
     .link-color {
         color: #8F855E;
     }
@@ -109,6 +113,21 @@
     }
     
     .login .mask-c {
+        background-color: rgba(0, 0, 0, 0.422);
+        height: 100%;
+    }
+    
+    .panier .image-head {
+        background-image: url(../images/panier.jpg);
+    }
+    
+    .panier .section-image {
+        height: 50vh;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .panier .mask-c {
         background-color: rgba(0, 0, 0, 0.422);
         height: 100%;
     }
