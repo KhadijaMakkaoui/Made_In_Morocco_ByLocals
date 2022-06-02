@@ -45,15 +45,15 @@
     }
     
     .index .image-head {
-        background-image: url(./Assets/images/headign-img.jpg);
+        background-image: url(../images/headign-img.jpg);
     }
     
     .index .image-dec1 {
-        background-image: url(./Assets/images/lamps-fes.jpg);
+        background-image: url(../images/lamps-fes.jpg);
     }
     
     .index .image-dec2 {
-        background-image: url(./Assets/images/tapis-fes.jpg);
+        background-image: url(../images/tapis-fes.jpg);
     }
     
     .img-form {
@@ -79,7 +79,7 @@
     }
     
     .categories .image-head {
-        background-image: url(./Assets/images/categories.jpg);
+        background-image: url(../images/categories.jpg);
     }
     
     .categories .mask {
