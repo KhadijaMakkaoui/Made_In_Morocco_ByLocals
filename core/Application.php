@@ -80,6 +80,10 @@ class Application{
 		// $this->session->set('user',$primaryValue);
 		return true;
 	}
+	public static function isGuest(){
+		return !self::$app->user;
+
+	}
 	public function logout(){
 		$this->user=null;
 		self::$app->session->remove('user');
