@@ -61,7 +61,7 @@
     </div>
     <!-- Navbar -->
 
-    <div class="container">
+    <div class="first-color">
         <?php if(Application::$app->session->getFlash('success')):?>
         <div class="alert alert-success">
 <?php echo Application::$app->session->getFlash('success') ?>

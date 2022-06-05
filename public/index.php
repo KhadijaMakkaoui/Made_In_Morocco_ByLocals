@@ -33,5 +33,7 @@ $app->router->post('/register',[AuthController::class, 'register']);
 
 $app->router->get('/logout',[AuthController::class, 'logout']);
 
+// $app->router->get('/contact',[SiteController::class, 'contact']);
+// $app->router->post('/contact',[SiteController::class, 'handleContact']);
 
 $app->run();
