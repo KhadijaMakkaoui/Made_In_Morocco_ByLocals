@@ -61,7 +61,7 @@
         </div>
         <!-- Produit populaires -->
         <div class="produit-pop mb-5">
-            <h2 class="title m-5">produits similaires</h2>
+            <h2 class="title m-5">produits populaires</h2>
             <div class="d-flex flex-row flex-nowrap overflow-auto justify-content-between gap-5">
                 <div class="prod">
                     <div class="card shadow" style="width: 18rem">

@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/Assets/css/style.css">
-
-</head>
-
-<body class="first-color">
     <main class="wishlist">
         <!-- Vos selections -->
         <div class="text-center m-5 ">
@@ -28,7 +15,7 @@
             <!-- articles -->
             <div class="row text-center gap-4 w-100 justify-content-center">
                 <div class="card p-0 border-0 shadow" style="width: 18rem;">
-                    <img src="../public/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
+                    <img src="/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
                     <div class="card-body ">
                         <h5 class="card-title">Tapis noir et blanc</h5>
                         <p class="card-text price"> 550 DH</p>
@@ -38,7 +25,7 @@
                     </div>
                 </div>
                 <div class="card p-0 border-0 shadow" style="width: 18rem;">
-                    <img src="../public/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
+                    <img src="/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
                     <div class="card-body ">
                         <h5 class="card-title">Tapis noir et blanc</h5>
                         <p class="card-text price"> 550 DH</p>
@@ -48,7 +35,7 @@
                     </div>
                 </div>
                 <div class="card p-0 border-0 shadow" style="width: 18rem;">
-                    <img src="../public/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
+                    <img src="/Assets/images/accessoires.jpg" class="card-img-top " alt="image of product">
                     <div class="card-body ">
                         <h5 class="card-title">Tapis noir et blanc</h5>
                         <p class="card-text price"> 550 DH</p>
@@ -62,12 +49,3 @@
         </div>
 
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
-
-</body>
-
-</html>
-
-</html>
-
-</html>

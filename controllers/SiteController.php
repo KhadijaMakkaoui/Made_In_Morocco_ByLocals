@@ -17,6 +17,21 @@ class SiteController extends Controller{
         return $this->render('contact');
         // return Application::$app->router->renderView('contact');
     }
+    public function registerVendeur(){
+        return $this->render('registerVendeur');
+        // return Application::$app->router->renderView('contact');
+    }public function panier(){
+        return $this->render('panier');
+        // return Application::$app->router->renderView('contact');
+    }
+    public function wishList(){
+        return $this->render('wishList');
+        // return Application::$app->router->renderView('contact');
+    }
+    public function categories(){
+        return $this->render('categories');
+        // return Application::$app->router->renderView('contact');
+    }
     public function handleContact(Request $request){
         $body = $request->getBody();
         var_dump($body);

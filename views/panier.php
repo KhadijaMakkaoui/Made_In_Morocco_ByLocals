@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/Assets/css/style.css">
-
-</head>
-
-<body>
     <main class="panier ">
         <!-- heading -->
         <div class="section-image image-head text-center mb-5">
@@ -65,7 +52,7 @@
                 <div class="article row mb-4">
                     <!-- image -->
                     <div class="col-sm-12 col-md-4 mt-3" style=" width: 18rem; ">
-                        <img class="img-fluid rounded" src="../public/Assets/images/tapis-fes.jpg" alt="">
+                        <img class="img-fluid rounded" src="/Assets/images/tapis-fes.jpg" alt="">
                     </div>
                     <!-- Deatails cart -->
                     <div class="card border-0 col-sm-12 col-md-8 mt-3 " style="width:20rem">
@@ -126,12 +113,3 @@
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
-
-</body>
-
-</html>
-
-</html>
-
-</html>
