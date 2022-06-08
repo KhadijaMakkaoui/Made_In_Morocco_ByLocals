@@ -33,12 +33,28 @@ class SiteController extends Controller{
 
         // return Application::$app->router->renderView('contact');
     }
+    public function dashHome(){
+        $this->setLayout('dashboard');        
+        return $this->render('dashHome');
+    }
+
     public function dashProducts(){
         $this->setLayout('dashboard');        
         return $this->render('dashProducts');
-        // return Application::$app->router->renderView('contact');
+    }  
+    public function dashCommandes(){
+        $this->setLayout('dashboard');        
+        return $this->render('dashCommandes');
     }
-    
+    public function dashAvis(){
+        $this->setLayout('dashboard');        
+        return $this->render('dashAvis');
+    }
+    public function dashProfile(){
+        $this->setLayout('dashboard');        
+        return $this->render('dashProfile');
+    }
+
     public function handleContact(Request $request){
         $body = $request->getBody();
         var_dump($body);

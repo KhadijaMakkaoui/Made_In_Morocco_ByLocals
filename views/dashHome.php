@@ -1,3 +1,5 @@
+<h1>Dashboard</h1>
+
 <div class="container table-responsive"> 
 <table class="table table-bordered table-hover">
   <thead class="thead-dark">

@@ -26,20 +26,20 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item w-100 me-md-5">
-                            <a href="#" class="nav-link align-middle px-0 link-secondary">
+                            <a href="/dashHome" class="nav-link align-middle px-0 link-secondary">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline ">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item w-100">
-                            <a href="#" class="nav-link px-0 align-middle link-secondary">
+                            <a href="/dashProducts" class="nav-link px-0 align-middle link-secondary">
                                 <i class="fs-4 bi-shop"></i> <span class="ms-1 d-none d-sm-inline">Produits</span></a>
                         </li>
                         <li class="nav-item w-100">
-                            <a href="#" class="nav-link px-0 align-middle link-secondary">
+                            <a href="/dashCommandes" class="nav-link px-0 align-middle link-secondary">
                                 <i class="fs-4 bi-basket3"></i> <span class="ms-1 d-none d-sm-inline">Commandes</span> </a>
                         </li>
                         <li class="nav-item w-100">
-                            <a href="#" class="nav-link px-0 align-middle link-secondary">
+                            <a href="/dashAvis" class="nav-link px-0 align-middle link-secondary">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Avis</span> </a>
                         </li>
 
@@ -63,7 +63,7 @@
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="/dashProfile">Profile</a>
                             </li>
                             <hr>
                             <li>
@@ -72,7 +72,7 @@
                             <li><a class="dropdown-item" href="#">Aide</a></li>
                             <hr>
                             <li>
-                                <a class="dropdown-item" href="#">Déconnexion</a>
+                                <a class="dropdown-item" href="/logout">Déconnexion</a>
                             </li>
                         </ul>
                     </div>
