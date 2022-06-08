@@ -33,5 +33,16 @@ $app->router->post('/register',[AuthController::class, 'register']);
 
 $app->router->get('/logout',[AuthController::class, 'logout']);
 
+$app->router->get('/categories',[SiteController::class, 'categories']);
+$app->router->post('/categories',[SiteController::class, 'categories']);
+
+$app->router->get('/registerVendeur',[SiteController::class, 'registerVendeur']);
+$app->router->post('/registerVendeur',[SiteController::class, 'registerVendeur']);
+
+$app->router->get('/panier',[SiteController::class, 'panier']);
+$app->router->post('/panier',[SiteController::class, 'panier']);
+
+$app->router->get('/wishList',[SiteController::class, 'wishList']);
+$app->router->post('/wishList',[SiteController::class, 'wishList']);
 
 $app->run();

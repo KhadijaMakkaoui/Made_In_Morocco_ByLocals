@@ -10,11 +10,26 @@ class SiteController extends Controller{
         $params=[
             'name'=>"Khadija"
         ];
-        return $this->render('home',$params);
+        return $this->render('index',$params);
         // return Application::$app->router->renderView('home',$params);
     }
     public function contact(){
         return $this->render('contact');
+        // return Application::$app->router->renderView('contact');
+    }
+    public function registerVendeur(){
+        return $this->render('registerVendeur');
+        // return Application::$app->router->renderView('contact');
+    }public function panier(){
+        return $this->render('panier');
+        // return Application::$app->router->renderView('contact');
+    }
+    public function wishList(){
+        return $this->render('wishList');
+        // return Application::$app->router->renderView('contact');
+    }
+    public function categories(){
+        return $this->render('categories');
         // return Application::$app->router->renderView('contact');
     }
     public function handleContact(Request $request){
