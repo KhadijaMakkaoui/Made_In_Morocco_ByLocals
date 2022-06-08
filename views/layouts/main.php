@@ -9,31 +9,44 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="Assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/style.css">
 
     <title></title>
 </head>
 
 <body>
-    <?php #echo Application::ROOT_DIR; ?>
+    
     <!-- Navbar -->
     <div class="first-color">
         <div class="">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="">
-                    <a class="navbar-brand navbar-expand-sm" href="/"><img src="/Assets/images/logo.svg" class="w-75" alt="logo" /></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    
+                    <a class="navbar-brand" href="/"><img src="/Assets/images/logo.svg" class="w-75" alt="logo" /></a>
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                </div>
+                    
+                  
+                
                 <div class="collapse navbar-collapse col-lg-10  justify-content-end me-4" id="navbarToggler">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item"><a class="nav-link" href="/categories">Boutique</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/categories">Nos catégories</a></li>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories">Boutique</a>
+                        </li>
+                        <li class="nav-item dropdown pointer">
+                            <span class="dropdown-toggle nav-link " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Nos catégories</span>
+                            <ul class="dropdown-menu  ">
+                                <li><a href="#" class="nav-link">Maison et Décorations</a></li>
+                                <li><a href="#" class="nav-link">Vêtement et accessoirs</a></li>
+                                <li><a href="#" class="nav-link">Herbes, épices et fruits secs</a></li>
+                                <li><a href="#" class="nav-link">Santé et cosmetique</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="#">Blogue et histoires</a></li>
                         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                        <li class="nav-item">|</li>
+                        <!-- <li class="nav-item">|</li> -->
 
                        
                     </ul>
