@@ -20,6 +20,10 @@
         background-color: #FAF6E9;
     }
     
+    .fifth-color {
+        background-color: #C2DED1;
+    }
+    
     .link-color {
         color: #8F855E;
     }
@@ -130,4 +134,14 @@
     .panier .mask-c {
         background-color: rgba(0, 0, 0, 0.422);
         height: 100%;
+    }
+    /* Dashboard */
+    
+    .dashboard ul li:hover {
+        background-color: #FFFDF6;
+        border-top-left-radius: 20px;
+    }
+    
+    .pointer {
+        cursor: pointer;
     }
