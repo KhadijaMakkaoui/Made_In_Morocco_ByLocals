@@ -30,8 +30,15 @@ class SiteController extends Controller{
     }
     public function categories(){
         return $this->render('categories');
+
         // return Application::$app->router->renderView('contact');
     }
+    public function dashProducts(){
+        $this->setLayout('dashboard');        
+        return $this->render('dashProducts');
+        // return Application::$app->router->renderView('contact');
+    }
+    
     public function handleContact(Request $request){
         $body = $request->getBody();
         var_dump($body);
