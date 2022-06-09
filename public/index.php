@@ -45,4 +45,14 @@ $app->router->post('/panier',[SiteController::class, 'panier']);
 $app->router->get('/wishList',[SiteController::class, 'wishList']);
 $app->router->post('/wishList',[SiteController::class, 'wishList']);
 
+$app->router->get('/dashHome',[SiteController::class, 'dashHome']);
+
+$app->router->get('/dashProducts',[SiteController::class, 'dashProducts']);
+
+$app->router->get('/dashCommandes',[SiteController::class, 'dashCommandes']);
+
+$app->router->get('/dashAvis',[SiteController::class, 'dashAvis']);
+$app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
+
+
 $app->run();
