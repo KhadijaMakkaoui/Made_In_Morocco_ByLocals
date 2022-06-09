@@ -7,7 +7,10 @@ class Field{
     public const TYPE_TEXT = 'text';
     public const TYPE_PASSWORD = 'password';
     public const TYPE_NUMBER = 'number';
-
+    public const TYPE_DATE = 'date';
+    public const TYPE_HIDDEN = 'hidden';
+    public const LABEL_HIDDEN = 'd-none';
+    
     public Model $model;
     public string $attribute;
     public string $type;
@@ -38,6 +41,16 @@ class Field{
     }
     public function passwordField(){
         $this->type=self::TYPE_PASSWORD;
+        return $this;
+    }
+    public function dateField()
+    {
+        $this->type = self::TYPE_DATE;
+        return $this;
+    }
+    public function numberField()
+    {
+        $this->type = self::TYPE_NUMBER;
         return $this;
     }
 }
