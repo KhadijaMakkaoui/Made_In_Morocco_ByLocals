@@ -38,10 +38,10 @@ class SiteController extends Controller{
         return $this->render('dashHome');
     }
 
-    public function dashProducts(){
-        $this->setLayout('dashboard');        
-        return $this->render('dashProducts');
-    }  
+    // public function dashProducts(){
+    //     $this->setLayout('dashboard');        
+    //     return $this->render('dashProducts');
+    // }  
     public function dashCommandes(){
         $this->setLayout('dashboard');        
         return $this->render('dashCommandes');

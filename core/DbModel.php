@@ -9,11 +9,12 @@ abstract class DbModel extends Model {
      */
     abstract public function tableName():string ;
     abstract public function attributes():array ;
+    public $dataList = [];
     public static function primaryKey():string{
         return 'id';
     } 
     /**
-     * permet de returner le resultat du prepareIt predefinie 
+     * permet de returner le resultat du prepare() predefinie 
      */
     public function prepareIt($sql){
         return Application::$app->db->pdo->prepare($sql);

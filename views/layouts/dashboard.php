@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/style.css">
 
     <title></title>
 </head>
 
-<body>
+<body class="first-color">
 <!-- Sidebar -->
-    <div class="first-color dashboard">
+    <div class=" dashboard">
         <div class="row flex-nowrap ">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 fifth-color">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
