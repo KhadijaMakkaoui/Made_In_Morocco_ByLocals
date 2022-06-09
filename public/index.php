@@ -2,6 +2,7 @@
 
 use app\core\Application;
 use app\controllers\AuthController;
+use app\controllers\ProductController;
 use app\controllers\SiteController;
 use app\models\User;
 
@@ -45,9 +46,10 @@ $app->router->post('/panier',[SiteController::class, 'panier']);
 $app->router->get('/wishList',[SiteController::class, 'wishList']);
 $app->router->post('/wishList',[SiteController::class, 'wishList']);
 
-$app->router->get('/dashHome',[SiteController::class, 'dashHome']);
+$app->router->get('/dashHome',[ProductController::class, 'dashHome']);
 
-$app->router->get('/dashProducts',[SiteController::class, 'dashProducts']);
+$app->router->get('/dashProducts',[ProductController::class, 'productsList']);
+$app->router->post('/dashProducts',[ProductController::class, 'productsList']);
 
 $app->router->get('/dashCommandes',[SiteController::class, 'dashCommandes']);
 
