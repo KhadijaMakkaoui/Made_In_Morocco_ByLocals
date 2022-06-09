@@ -2,6 +2,7 @@
 
 use app\core\Application;
 use app\controllers\AuthController;
+use app\controllers\AvisController;
 use app\controllers\CommandeController;
 use app\controllers\ProductController;
 use app\controllers\SiteController;
@@ -55,7 +56,9 @@ $app->router->post('/dashProducts',[ProductController::class, 'productsList']);
 $app->router->get('/dashCommandes',[CommandeController::class, 'commandesList']);
 $app->router->post('/dashCommandes',[CommandeController::class, 'commandesList']);
 
-$app->router->get('/dashAvis',[SiteController::class, 'dashAvis']);
+$app->router->get('/dashAvis',[AvisController::class, 'avisList']);
+$app->router->post('/dashAvis',[AvisController::class, 'avisList']);
+
 $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
 
 
