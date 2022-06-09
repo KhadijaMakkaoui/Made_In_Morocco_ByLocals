@@ -7,7 +7,7 @@ use app\core\UserModel;
 
 class User extends UserModel {
 
-    const STATUS_INACTIVE= 1;
+    const STATUS_INACTIVE= 0;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
@@ -30,11 +30,11 @@ class User extends UserModel {
     }
     public function labels():array{
         return [
-            'firstname' => 'First name'
-        , 'lastname' => 'Last name',
-         'email'  => 'Email',
-          'password' => 'Password',
-          'confirmPassword'  => 'Confirm Password'];
+            'firstname' => 'First name',
+            'lastname' => 'Last name',
+            'email'  => 'Email',
+            'password' => 'Password',
+            'confirmPassword'  => 'Confirm Password'];
 
     }
 

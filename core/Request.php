@@ -1,6 +1,9 @@
 <?php
 namespace app\core;
 class Request{
+    /**
+     * Permet de recuperer l'URI (path après le premier slash)
+     */
     public function getPath() { 
         $path=$_SERVER['REQUEST_URI']?? '/';
         $position=strpos($path,'?');
@@ -8,6 +11,7 @@ class Request{
             return $path;
         }
         $path=substr($path,0,$position);
+        return $path;
     }
     /**
      * permet de retourner le contenue de $_SERVER['REQUEST_METHOD'] en miniscule
