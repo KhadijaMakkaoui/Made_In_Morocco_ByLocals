@@ -1,45 +1,32 @@
-<h1>Commandes</h1>
+
 <div class="container table-responsive"> 
+<caption>
+  <h1 class="mb-4">Commandes</h1> </caption>
 <table class="table table-bordered table-hover">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">id</th>
+      <th scope="col">Date</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Description</th>
+      <th scope="col">Type</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-     <tr>
-      <th scope="row">4</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+      <?php foreach($commandes as $commande) : ?>
+      <tr>
+          <td><?php echo $commande['id']; ?></td>
+          <td><?php echo $commande['date']; ?></td>
+          <td><?php echo $commande['quantite']; ?></td>
+          <td><?php echo $commande['description']; ?></td>
+          <td><?php echo $commande['type']; ?></td>
+          <td>
+              <a class="link-secondary" href="./updateClass?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
+              <a class="link-secondary" href="./delete?id=<?php echo $produit['id']; ?>"><i class="bi bi-trash"></i></a> 
+          </td>
+      </tr>
+      <?php endforeach; ?>
   </tbody>
 </table>
 </div>
