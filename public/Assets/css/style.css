@@ -101,8 +101,7 @@
         object-fit: cover;
     }
     
-    .categories .categ {
-        /* background-image: url(./Assets/images/cosmetique.jpg); */
+    .recherche-categ .categ {
         background-position: center;
         background-size: cover;
         padding: 0px;
