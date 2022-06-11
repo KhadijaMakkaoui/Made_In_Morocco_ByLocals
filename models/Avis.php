@@ -10,6 +10,8 @@ class Avis extends DbModel
  
         public string $nb_etoile_avis;
         public string $commentaire_avis;
+        public int $fk_client;
+        public int $fk_produit;
 
 
     public function tableName(): string
