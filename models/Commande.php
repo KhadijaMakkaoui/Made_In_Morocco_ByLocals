@@ -12,6 +12,9 @@ class Commande extends DbModel
     public int $quantite;
     public string $description ;
     public string $type;
+    public int $fk_client;
+    public int $fk_produit;
+
 
 
     public function tableName(): string

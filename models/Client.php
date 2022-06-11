@@ -3,27 +3,27 @@
 namespace app\models;
 
 use app\core\DbModel;
+use DateTime;
 
-
-class Avis extends DbModel
+class Client extends DbModel
 {
  
-        public string $nb_etoile_avis;
-        public string $commentaire_avis;
-        public int $fk_client;
-        public int $fk_produit;
+        public string $adresse_livraison = '';
+        public int $fk_account;
+
+
 
 
     public function tableName(): string
     {
-        return 'avis';
+        return 'clients';
     }
     public function attributes(): array
     {
         return [ 
-            'nb_etoile_avis',            
-            'commentaire_avis'
-            ];
+            'adresse_livraison',            
+            'fk_account' 
+        ];
     }
 
     public function update(int $id)

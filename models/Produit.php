@@ -3,27 +3,36 @@
 namespace app\models;
 
 use app\core\DbModel;
+use DateTime;
 
-
-class Avis extends DbModel
+class Produit extends DbModel
 {
  
-        public string $nb_etoile_avis;
-        public string $commentaire_avis;
-        public int $fk_client;
-        public int $fk_produit;
+        public string $titre_produit;
+        public string $description_produit = '';
+        public int $quantite_produit;
+        public float $prix_produit ;
+        public bool $dispo_produit;
+        public DateTime $createdAt_produit;
+        public int $fk_s_categorie;
+        public int $fk_image;
+        public int $fk_fabriquant;
+
+
 
 
     public function tableName(): string
     {
-        return 'avis';
+        return 'produits';
     }
     public function attributes(): array
     {
         return [ 
-            'nb_etoile_avis',            
-            'commentaire_avis'
-            ];
+            'titre_produit',            
+            'description_produit' ,
+            'quantite_produit',
+            'prix_produit',
+            'dispo_produit'];
     }
 
     public function update(int $id)

@@ -5,13 +5,13 @@ namespace app\controllers;
 use app\core\Request;
 use app\core\Controller;
 use app\core\Application;
-use app\models\Product;
+use app\models\Produit;
 
 class ProductController extends Controller
 {
     public function productsList()
     {
-        $product = new Product();
+        $product = new Produit();
 
         if ($product->selectAll()){
             $data = $product->dataList;

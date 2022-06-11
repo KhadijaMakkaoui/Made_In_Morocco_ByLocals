@@ -3,21 +3,27 @@
 namespace app\models;
 
 use app\core\DbModel;
+use DateTime;
 
-
-class Product extends DbModel
+class UserData extends DbModel
 {
  
-        public string $titre_produit;
-        public string $description_produit = '';
-        public int $quantite_produit;
-        public float $prix_produit ;
-        public bool $dispo_produit;
+        public string $nom='';
+        public string $prenom = '';
+        public string $genre;
+        public DateTime $dateNais ;
+        public string $adresse;
+        public string $tel;
+        public int $fk_ville;
+        public int $fk_image;
+        public int $fk_account;
+
+
 
 
     public function tableName(): string
     {
-        return 'produits';
+        return 'users_data';
     }
     public function attributes(): array
     {
