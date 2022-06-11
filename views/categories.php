@@ -70,9 +70,9 @@
         <!-- rechercher par categorie -->
         <div class="m-5 section-categ">
             <h2 class="title mb-4">rechercher par catégorie</h2>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center recherche-categ">
                 <div class="row w-75 gap-4 mb-4" style="height:18rem">
-                    <div class="card categ col" style="background-image: url( /Assets/images/maison.jpg);">
+                    <div class="card categ col" style="background-image: url( /Assets/images/maison.jpg);background-position: center;background-size: cover;">
                         <div class="card-body text-light mask-c align-bottom">
                             <h3 class="text-uppercase">Maison et décoration</h3>
                         </div>
