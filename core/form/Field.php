@@ -43,6 +43,13 @@ class Field{
         $this->type=self::TYPE_PASSWORD;
         return $this;
     }
+    public function hiddenField()
+    {
+        $this->type = self::TYPE_HIDDEN;
+        $this->label = self::LABEL_HIDDEN;
+
+        return $this;
+    }
     public function dateField()
     {
         $this->type = self::TYPE_DATE;
