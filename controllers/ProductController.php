@@ -7,6 +7,8 @@ use app\models\Image;
 use app\models\Produit;
 use app\core\Controller;
 use app\core\Application;
+use app\models\Categorie;
+use app\models\SousCategorie;
 
 class ProductController extends Controller
 {   
@@ -22,6 +24,7 @@ class ProductController extends Controller
             $img=$product->selectImage();
             $s_categ=$product->selectSousCategory();
             $categ=$product->selectCategory();
+
             $this->setLayout('dashboard');        
             return $this->render('dashProducts', [
                 'produits' => $data,
@@ -30,68 +33,93 @@ class ProductController extends Controller
                 'categorie'=>  $categ
             ]);
         }
-     }
-    
+    }
 
-    // public function addTeacher(Request $request){
-    //     $product = new Product();
-    //     $params = [
-    //         'model' => $product,
-    //     ];
-    //     if ($request->isGet()){
-    //         return $this->render('addTeacher', $params);
-    //     }
-    //     if($request->isPost())
-    //     {
-    //         $product->loadData($request->getBody());
+    public function add(Request $request){
+        $product = new Produit();
+        $categorie=new Categorie();
+        $s_categorie=new SousCategorie();
+        $s_categorie->selectAll();
+        $categorie->selectAll();
+        if ($request->isGet()){
+            if ($product->selectAll()){
+                $data = $product->dataList;
+                $img=$product->selectImage();
+                $s_categ=$s_categorie->dataList;
+                $categ=$categorie->dataList;
+                
+                // var_dump($categ);
+                $this->setLayout('dashboard');        
+                return $this->render('addProduct', [
+                    'produits' => $data,
+                    'image'   => $img,
+                    's_categories'=>  $s_categ,
+                    'categories'=>  $categ
+                ]);
+            }
+            // return $this->render('productAdd', $params);
+        }
+        if($request->isPost())
+        {
+            $product->loadData($request->getBody());
 
-    //         if ($product->save()){
-    //             Application::$app->session->setFlash('success', 'Updated successfully');
-    //             Application::$app->response->redirect('product');
-    //         }
+            if ($product->save()){
+                Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+                Application::$app->response->redirect('dashProducts');
+            }
+            $this->setLayout('dashboard');        
+            return $this->render('addProduct', [
+                'model' => $product
+            ]);
+        }
+        $this->setLayout('dashboard');        
+        return $this->render('addProduct', [
+            'model' => $product
+        ]);    
+    }
+    public function update(Request $request)
+    {
+        $product = new Produit();
+        $categorie=new Categorie();
+        $s_categorie=new SousCategorie();
+        $s_categorie->selectAll();
+        $categorie->selectAll();
+        if ($request->isGet()){
+            if ($product->selectAll()){
+                $data = $product->dataList;
+                $img=$product->selectImage();
+                $s_categ=$s_categorie->dataList;
+                $categ=$categorie->dataList;
 
-    //         return $this->render('addTeacher', [
-    //             'model' => $product
-    //         ]);
-    //     }
+                // var_dump($categ);
+                $this->setLayout('dashboard');        
+                return $this->render('updateProduct', [
+                    'model' => $product,
+                    'image'   => $img,
+                    's_categories'=>  $s_categ,
+                    'categories'=>  $categ
+                ]);
+            }
+            // return $this->render('productAdd', $params);
+        }
+        if($request->isPost())
+        {
+            $product->loadData($request->getBody());
 
-    //     return $this->render('addTeacher', [
-    //         'model' => $product
-    //     ]);    
-    // }
-    // public function updateTeacher(Request $request)
-    // {
-    //     $product = new TeacherModel();
-    //     $params = [
-    //         'model' => $product
-    //     ];
-    //     if ($request->isGet()){  
-    //         $product->loadData($request->getBody());
-    //         $product->select($product->id);
-    //         $product->loadData($product->dataList);
-    //         $params = [
-    //             'model' => $product
-    //         ];      
-    //         return $this->render('updateTeacher', $params);
-    //     }
-    //     if($request->isPost())
-    //     {
-    //         $product->loadData($request->getBody());
+            if ($product->update($product->id)){
+                Application::$app->session->setFlash('success', 'Thanks for updating Teacher');
+                Application::$app->response->redirect('product');
+            }
 
-    //         if ($product->update($product->id)){
-    //             Application::$app->session->sefFlash('success', 'Thanks for updating Teacher');
-    //             Application::$app->response->redirect('product');
-    //         }
+            return $this->render('updateProduct', [
+                'model' => $product
+            ]);
+        }
 
-    //         return $this->render('updateTeacher', [
-    //             'model' => $product
-    //         ]);
-    //     }
-
-    //     return $this->render('updateTeacher', [
-    //         'model' => $product
-    //     ]);    
-    // }
+        return $this->render('updateProduct', [
+            'model' => $product
+        ]);    
+    }
 
     
 
