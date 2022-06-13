@@ -8,10 +8,9 @@ use DateTime;
 class Commande extends DbModel
 {
  
-    public DateTime $date;
+    // public DateTime $date;
     public int $quantite;
-    public string $description ;
-    public string $type;
+    public string $description='';
     public int $fk_client;
     public int $fk_produit;
 
@@ -24,10 +23,10 @@ class Commande extends DbModel
     public function attributes(): array
     {
         return [ 
-            'date',
             'quantite',            
             'description' ,
-            'type'
+            'fk_client',
+            'fk_produit'
             ];
     }
 

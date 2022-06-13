@@ -3,9 +3,11 @@
 namespace app\controllers;
 
 use app\core\Request;
+use app\models\Client;
+use app\models\Produit;
 use app\core\Controller;
-use app\core\Application;
 use app\models\Commande;
+use app\core\Application;
 
 class CommandeController extends Controller
 {
@@ -23,32 +25,40 @@ class CommandeController extends Controller
      }
 
 
-    // public function addTeacher(Request $request){
-    //     $commande = new commande();
-    //     $params = [
-    //         'model' => $commande,
-    //     ];
-    //     if ($request->isGet()){
-    //         return $this->render('addTeacher', $params);
-    //     }
-    //     if($request->isPost())
-    //     {
-    //         $commande->loadData($request->getBody());
+    public function add(Request $request){
+        $commande = new Commande();
+        $product =new Produit();
+        $client =new Client();
+        $product->selectAll();
+        $client->selectAll();
+        $params = [
+            'model' => $commande,
+            'product' => $product->dataList,
+            'client' => $client->dataList
+        ];
+        if ($request->isGet()){
+            $this->setLayout('dashboard');        
+            return $this->render('addCommande', $params);
+        }
+        if($request->isPost())
+        {
+            $commande->loadData($request->getBody());
 
-    //         if ($commande->save()){
-    //             Application::$app->session->setFlash('success', 'Updated successfully');
-    //             Application::$app->response->redirect('commande');
-    //         }
+            if ($commande->save()){
+                Application::$app->session->setFlash('success', 'added successfully');
+                Application::$app->response->redirect('dashCommandes');
+            }
+            $this->setLayout('dashboard');        
+            return $this->render('addCommande', [
+                'model' => $commande
+            ]);
+        }
+        $this->setLayout('dashboard');        
 
-    //         return $this->render('addTeacher', [
-    //             'model' => $commande
-    //         ]);
-    //     }
-
-    //     return $this->render('addTeacher', [
-    //         'model' => $commande
-    //     ]);    
-    // }
+        return $this->render('addCommande', [
+            'model' => $commande
+        ]);    
+    }
     // public function updateTeacher(Request $request)
     // {
     //     $commande = new TeacherModel();
