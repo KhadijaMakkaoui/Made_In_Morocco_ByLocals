@@ -3,28 +3,35 @@
 namespace app\controllers;
 
 use app\core\Request;
+use app\models\Image;
+use app\models\Produit;
 use app\core\Controller;
 use app\core\Application;
-use app\models\Produit;
 
 class ProductController extends Controller
-{
+{   
+    // public $product = new Produit();
+    // public $image =new Image();
     public function productsList()
     {
-        $product = new Produit();
 
+         $product = new Produit();
+        //  $image =new Image();
         if ($product->selectAll()){
             $data = $product->dataList;
+            $img=$product->selectImage();
+            $s_categ=$product->selectSousCategory();
+            $categ=$product->selectCategory();
             $this->setLayout('dashboard');        
             return $this->render('dashProducts', [
-                'produits' => $data
+                'produits' => $data,
+                'image'   => $img,
+                's_categorie'=>  $s_categ,
+                'categorie'=>  $categ
             ]);
         }
      }
-     public function dashHome(){
-        $this->setLayout('dashboard');        
-        return $this->render('dashHome');
-    }
+    
 
     // public function addTeacher(Request $request){
     //     $product = new Product();
