@@ -7,7 +7,8 @@ use DateTime;
 
 class Produit extends DbModel
 {
- 
+    
+        public int $id;
         public string $titre = '';
         public string $description= '';
         public int $quantite ;
@@ -16,9 +17,6 @@ class Produit extends DbModel
         public int $fk_s_categorie;
         public int $fk_image;
         public int $fk_fabriquant;
-
-
-
 
     public function tableName(): string
     {
