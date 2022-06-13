@@ -1,8 +1,7 @@
 <div class="d-flex justify-content-between">
-    <h1 class="mb-4 ">Produits</h1>
+    <h1 class="mb-4 ">Commandes</h1>
     <a href="/addCommande" class="btn btn-outline-dark  h-50">
         <i class="bi bi-plus-lg"></i> Nouvelle commande</a>
-
 </div>
 <div class="container table-responsive"> 
 <table class="table table-bordered table-hover">
