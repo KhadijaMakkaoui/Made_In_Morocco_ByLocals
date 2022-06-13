@@ -11,7 +11,6 @@
       <th scope="col">Date</th>
       <th scope="col">Quantité</th>
       <th scope="col">Description</th>
-      <th scope="col">Type</th>
       <th scope="col">ID produit</th>
       <th scope="col">ID client</th>
 
@@ -24,7 +23,6 @@
           <td><?php echo $commande['date']; ?></td>
           <td><?php echo $commande['quantite']; ?></td>
           <td><?php echo $commande['description']; ?></td>
-          <td><?php echo $commande['type']; ?></td>
           <td><?php echo $commande['fk_produit']; ?></td>
           <td><?php echo $commande['fk_client']; ?></td>
           <td>
