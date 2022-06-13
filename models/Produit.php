@@ -8,11 +8,10 @@ use DateTime;
 class Produit extends DbModel
 {
  
-        public string $titre_produit;
-        public string $description_produit = '';
-        public int $quantite_produit;
-        public float $prix_produit ;
-        public bool $dispo_produit;
+        public string $titre;
+        public string $description= '';
+        public int $quantite;
+        public float $prix ;
         public DateTime $createdAt_produit;
         public int $fk_s_categorie;
         public int $fk_image;
@@ -28,12 +27,15 @@ class Produit extends DbModel
     public function attributes(): array
     {
         return [ 
-            'titre_produit',            
-            'description_produit' ,
-            'quantite_produit',
-            'prix_produit',
-            'dispo_produit'];
+            'titre',            
+            'description' ,
+            'quantite',
+            'prix',
+            ];
     }
+    // public function getId() {
+    //     return 
+    // }
 
     public function update(int $id)
     {
@@ -44,16 +46,23 @@ class Produit extends DbModel
     {
         return parent::selectAll();
     }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {
         return parent::select($id);
     }
-
+    public function selectImage()
+    {
+        return parent::selectImage();
+    }
+    public function selectSousCategory()
+    {
+        return parent::selectSousCategory();
+    } 
+    public function selectCategory()
+    {
+        return parent::selectCategory();
+    }
     public function delete(int $id)
     {
         return parent::delete($id);
