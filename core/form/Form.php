@@ -15,4 +15,8 @@ class Form{
     public static function field(Model $model,$attribute){
         return new Field($model,$attribute);
     }
+    public static function selectField(Model $model, $attribute, $values)
+    {
+        return new SelectField($model, $attribute, $values);
+    }
 }
