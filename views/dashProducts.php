@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between">
     <h1 class="mb-4 ">Produits</h1>
-    <a href="/productAdd" class="btn btn-outline-dark  h-50">
+    <a href="/addProduct" class="btn btn-outline-dark  h-50">
         <i class="bi bi-plus-lg"></i> Nouveau produit</a>
 
 </div>
@@ -48,7 +48,7 @@
                     <?php echo $categorie['libelle']; ?>
                 </td>
                 <td>
-                    <a class="link-secondary" href="./updateClass?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
+                    <a class="link-secondary" href="./productUpdate?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
                     <a class="link-secondary" href="./delete?id=<?php echo $produit['id']; ?>"><i class="bi bi-trash"></i></a>
                 </td>
             </tr>
