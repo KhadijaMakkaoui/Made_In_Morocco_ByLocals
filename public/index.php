@@ -53,8 +53,17 @@ $app->router->get('/dashHome',[ProductController::class, 'dashHome']);
 $app->router->get('/dashProducts',[ProductController::class, 'productsList']);
 $app->router->post('/dashProducts',[ProductController::class, 'productsList']);
 
+$app->router->get('/addProduct',[ProductController::class, 'add']);
+$app->router->post('/addProduct',[ProductController::class, 'add']);
+
+$app->router->get('/updateProduct',[ProductController::class, 'update']);
+$app->router->post('/updateProduct',[ProductController::class, 'update']);
+
 $app->router->get('/dashCommandes',[CommandeController::class, 'commandesList']);
 $app->router->post('/dashCommandes',[CommandeController::class, 'commandesList']);
+
+$app->router->get('/addCommande',[CommandeController::class, 'add']);
+$app->router->post('/addCommande',[CommandeController::class, 'add']);
 
 $app->router->get('/dashAvis',[AvisController::class, 'avisList']);
 $app->router->post('/dashAvis',[AvisController::class, 'avisList']);
