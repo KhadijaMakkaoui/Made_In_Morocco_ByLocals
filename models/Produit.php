@@ -8,11 +8,11 @@ use DateTime;
 class Produit extends DbModel
 {
  
-        public string $titre;
+        public string $titre = '';
         public string $description= '';
-        public int $quantite;
+        public int $quantite ;
         public float $prix ;
-        public DateTime $createdAt_produit;
+        // public DateTime $createdAt_produit;
         public int $fk_s_categorie;
         public int $fk_image;
         public int $fk_fabriquant;
@@ -31,11 +31,18 @@ class Produit extends DbModel
             'description' ,
             'quantite',
             'prix',
+            'fk_s_categorie',
+            'fk_image',
+            'fk_fabriquant'
             ];
     }
     // public function getId() {
     //     return 
     // }
+    public function save()
+    {
+        return parent::save();
+    }
 
     public function update(int $id)
     {
@@ -68,10 +75,7 @@ class Produit extends DbModel
         return parent::delete($id);
     }
 
-    public function save()
-    {
-        return parent::save();
-    }
+    
     public function rules(): array
     {
         return [
