@@ -22,7 +22,7 @@ class Image extends DbModel
             'chemin' ,
             ];
     }
-
+    
     public function update(int $id)
     {
         return parent::update($id);
