@@ -113,16 +113,16 @@ class CommandeController extends Controller
     //     }
     // }
 
-    // public function deleteTeacher(Request $request)
-    // {
-    //     $commande = new TeacherModel();
-    //     if ($request->isGet()){  
-    //         $commande->loadData($request->getBody());
-    //         if ($commande->delete($commande->id)){ //to integrate validate method
-    //             Application::$app->session->sefFlash('success', 'has successfully deleted');
-    //             Application::$app->response->redirect('commande');
-    //         }
-    //     }
-    // }
+    public function delete(Request $request)
+    {
+        $commande = new Commande();
+        if ($request->isGet()){  
+            $commande->loadData($request->getBody());
+            if ($commande->delete($commande->id)){ //to integrate validate method
+                Application::$app->session->setFlash('success', 'has successfully deleted');
+                Application::$app->response->redirect('dashCommandes');
+            }
+        }
+    }
     
 }
