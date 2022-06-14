@@ -32,7 +32,7 @@
                 </div>
                 <div class="description col-lg-6 p-5  align-self-center">
                     <h4 class="title ">Nous aidons les créateurs et les commerçants locaux</h4>
-                    <p class="text-secondary ">Support des individus et cooperations marocains est notre priorité .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien </p>
+                    <p class="text-secondary ">Support des individus et cooperations marocains est notre priorité .Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien </p>
                 </div>
 
 
@@ -191,7 +191,7 @@
             <div class="histoire container m-5 text-center">
                 <h2 class="title mb-5">Histoires des commerçants locaux </h2>
                 <div class="container">
-                    <img src="/Assets/images/histoire-sec.png" class="w-100" alt=" ">
+                    <img src="/Assets/images/histoire-img.png" class="w-100" alt=" ">
                 </div>
                 <div class="call-to-action">
                     <p class="text-secondary fs-4 m-5">Derrière chaque produit il y a un Artisan, une vie, une histoire…</p>
@@ -207,9 +207,10 @@
         <!-- section commerçants -->
         <div class="mission m-5 row ">
             <div class="row justify-content-center">
-                <div class="img col-lg-6 mb-sm-5">
+                <div class="img col-lg-6 ">
                     <img src="/Assets/images/register-action.jpg" alt="handemader" class="img-fluid rounded-3">
                 </div>
+               
                 <div class="description col-lg-6 align-self-center">
                     <h4 class="title ">êtes-vous un marocain ou une marocaine qui fabrique des produits 100% MADE IN MOROCCO?</h4>
                     <p class="text-secondary my-5 fs-5">Rejoignez-nous! Postuler une demande d’inscription à travers des étapes simples. Et commencer à vendre vos produit sur MADE IN MOROCCO</p>
