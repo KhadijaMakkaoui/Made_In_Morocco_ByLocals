@@ -1,3 +1,7 @@
+<?php 
+use app\core\form\Form;
+
+?>
     <section class="login">
         <div class="row justify-content-center align-items-center">
 
@@ -29,7 +33,9 @@
                                 </div>
                             </div> -->
                             <!-- register form -->
-                            <form action="#" class="signin-form justify-content-center align-items-center">
+                            <?php $form=Form::begin('',"post"); ?>
+
+                            <div class="signin-form justify-content-center align-items-center">
                                 <div class="mb-2 mx-3">
                                     <h2 class="my-3">Inscription Fabriquant(e)</h2>
                                     <p class=" mb-0">Avez-vous déjà un compte?
@@ -38,7 +44,7 @@
 
                                 </div>
                                 <!-- full name -->
-                                <div class="row mx-1">
+                                <!-- <div class="row mx-1">
                                     <div class="col-md-6  mb-2">
                                         <div class="form-outline">
                                             <label class="form-label" for="firstName">Prénom</label>
@@ -52,9 +58,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Adresse -->
+                                Adresse
                                 <div class="row mx-1">
-                                    <!-- Region -->
+                                    Region
                                     <div class="col-md-6  mb-2">
                                         <div class="form-outline">
                                             <label class="form-label" for="region">Région</label>
@@ -66,7 +72,7 @@
                                               </select>
                                         </div>
                                     </div>
-                                    <!-- Ville -->
+                                    Ville 
                                     <div class="col-md-6  mb-2">
                                         <div class="form-outline">
                                             <label class="form-label" for="region">Ville</label>
@@ -79,25 +85,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Email input -->
+                                Email input
                                 <div class="form-outline mb-2 mx-3">
                                     <label class="form-label" for="form3Example3"> Addresse email</label>
                                     <input type="email" id="form3Example3" class="form-control" placeholder="Enter une addresse email valide " />
                                 </div>
-                                <!-- Email input -->
+                                Email input
                                 <div class="form-outline mb-2 mx-3">
                                     <label class="form-label" for="tel">Numéro de téléphone</label>
                                     <input type="tel" id="tel" class="form-control" placeholder="Enter votre numéro de téléphone " />
                                 </div>
-                                <!-- Password input -->
+                                Password input
                                 <div class="form-outline mb-2 mx-3">
                                     <label class="form-label" for="form3Example4">Mot de passe</label>
                                     <input type="password" id="form3Example4" class="form-control " placeholder="Enterer le mot de passe" />
                                 </div>
-                                <!-- Password confirm input -->
+                                Password confirm input
                                 <div class="form-outline mb-2 mx-3">
                                     <label class="form-label" for="form3Example4">Confimation du mot de passe</label>
                                     <input type="password" id="form3Example4" class="form-control " placeholder="confirmer le mot de passe" />
+                                </div> -->
+                                <?php echo $form->field($model,'email') ?>
+                                <?php echo $form->field($model,'password')->passwordField() ?>
+                                <?php echo $form->field($model,'confirmPassword')->passwordField() ?>
+
+                                <div class="form-group mx-3">
+                                    <button type="submit" class="form-control btn btn-outline-dark rounded submit">S'inscrire</button>
                                 </div>
                                 <!-- Button submit -->
                                 <div class="form-group mx-3">
@@ -109,7 +122,9 @@
                                     </p>
 
                                 </div>
-                            </form>
+                            </div>
+                            <?php  Form::end(); ?>
+
                         </div>
 
                     </div>
