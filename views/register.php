@@ -1,6 +1,6 @@
 
-    <section class="login">
-        <div class="row justify-content-center align-items-center vh-100">
+    <section class="login ">
+        <div class="row justify-content-center align-items-center ">
 
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-12">

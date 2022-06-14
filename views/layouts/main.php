@@ -82,7 +82,7 @@
     </div>
     <!-- Navbar -->
 
-    <div class="first-color">
+    <div class="first-color pb-5">
         <?php if(Application::$app->session->getFlash('success')):?>
         <div class="alert alert-success">
             <?php echo Application::$app->session->getFlash('success') ?>
