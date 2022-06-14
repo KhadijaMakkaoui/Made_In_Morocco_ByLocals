@@ -7,7 +7,7 @@ use app\core\DbModel;
 
 class Avis extends DbModel
 {
- 
+        public int $id;
         public string $nb_etoile_avis;
         public string $commentaire_avis;
         public int $fk_client;

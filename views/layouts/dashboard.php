@@ -16,11 +16,19 @@
 </head>
 
 <body class="first-color">
+<<<<<<< HEAD
+
+    <div class=" dashboard">
+        <!-- Sidebar -->
+        <div class=" row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 fifth-color">
+=======
 <!-- Sidebar -->
     <div class="dashboard">
         <div class="row flex-nowrap ">
             <!-- Sidebar -->
             <div class="sidebar col-auto col-md-3 col-xl-2 px-sm-2 px-0 fifth-color">
+>>>>>>> main
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">
@@ -55,9 +63,13 @@
 
                 </div>
             </div>
+<<<<<<< HEAD
+            <div class=" col-md-9 col-xl-10 py-3 ">
+=======
             <div class=" main col py-3">
+>>>>>>> main
                 <!-- header -->
-                <div class="nav-bar d-flex justify-content-end">
+                <div class="container nav-bar d-flex justify-content-end">
                     <div class="dropdown small-dropdown">
                         <a class="btn  btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./Assets/images/maker.jpg" alt="" width="30" height="30" class="rounded-circle"> Ahmed Salim

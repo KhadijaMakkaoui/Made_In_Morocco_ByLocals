@@ -7,13 +7,13 @@ use DateTime;
 
 class UserData extends DbModel
 {
- 
+        public int $id;
         public string $nom='';
         public string $prenom = '';
-        public string $genre;
+        public string $genre ='';
         public DateTime $dateNais ;
-        public string $adresse;
-        public string $tel;
+        public string $adresse ='';
+        public string $tel ='';
         public int $fk_ville;
         public int $fk_image;
         public int $fk_account;
@@ -28,11 +28,16 @@ class UserData extends DbModel
     public function attributes(): array
     {
         return [ 
-            'titre_produit',            
-            'description_produit' ,
-            'quantite_produit',
-            'prix_produit',
-            'dispo_produit'];
+            'nom',            
+            'prenom' ,
+            'genre',
+            'dateNais',
+            'adresse',
+            'tel',
+            'fk_ville',
+            'fk_image',
+            'fk_account'
+        ];
     }
 
     public function update(int $id)

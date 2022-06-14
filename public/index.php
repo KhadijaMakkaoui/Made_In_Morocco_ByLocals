@@ -74,6 +74,9 @@ $app->router->post('/deleteCommande',[CommandeController::class, 'delete']);
 $app->router->get('/dashAvis',[AvisController::class, 'avisList']);
 $app->router->post('/dashAvis',[AvisController::class, 'avisList']);
 
+$app->router->get('/deleteAvis',[AvisController::class, 'delete']);
+$app->router->post('/deleteAvis',[AvisController::class, 'delete']);
+
 $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
 
 

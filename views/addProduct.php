@@ -22,22 +22,11 @@
             <label class="form-label" for="form6Example3">Prix</label>
             <input type="number" name="prix" id="form6Example3" class="form-control" placeholder="Prix du produit" min="0" />
         </div>
-        <!-- select categories -->
-        <div class="mb-4">
-            <label class="form-label" for="form6Example3">Catégorie</label>
-
-            <select class="form-select" name="" aria-label="Default select example">
-              <option>--Categorie--</option>
-              <?php foreach ($categories as $cat):?>
-              <option value="<?php echo $cat['id'] ?>"><?php echo $cat['libelle'] ?></option>
-              <?php endforeach;?>
-            </select>
-        </div>
         <!-- select Sous categories -->
         <div class="mb-4">
-            <label class="form-label" for="form6Example3">Sous catégorie</label>
+            <label class="form-label" for="form6Example3">Catégorie</label>
             <select class="form-select" name="fk_s_categorie" aria-label="Default select example">
-            <option selected>--Sous-categorie--</option>
+            <option selected>--Veuillez selectionnez une categorie--</option>
             <?php foreach ($s_categories as $cat):?>
               <option value="<?php echo $cat['id'] ?>"><?php echo $cat['libelle'] ?></option>
               <?php endforeach;?>
