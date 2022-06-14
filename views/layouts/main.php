@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse col-lg-10  justify-content-end me-4" id="navbarToggler">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/categories">Boutique</a>
+                            <a class="nav-link" href="/boutique">Boutique</a>
                         </li>
                         <li class="nav-item dropdown pointer">
                             <span class="dropdown-toggle nav-link " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
