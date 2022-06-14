@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceuil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/Assets/css/style.css">
-</head>
-
-<body class="first-color">
     <section class="login">
-        <div class="row justify-content-center align-items-center vh-100">
+        <div class="row justify-content-center align-items-center">
 
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-12">
@@ -46,7 +33,7 @@
                                 <div class="mb-2 mx-3">
                                     <h2 class="my-3">Inscription Fabriquant(e)</h2>
                                     <p class=" mb-0">Avez-vous déjà un compte?
-                                        <a href="logIn.php" class="text-secondary ">Se connecter</a>
+                                        <a href="/login" class="text-secondary ">Se connecter</a>
                                     </p>
 
                                 </div>
@@ -118,7 +105,7 @@
                                 </div>
                                 <div class="text-center my-1">
                                     <p class=" mb-0">vous n'êtes pas fabriquant?
-                                        <a href="register.php" class="text-secondary ">Inscrivez-vous ici</a>
+                                        <a href="/register" class="text-secondary ">Inscrivez-vous ici</a>
                                     </p>
 
                                 </div>

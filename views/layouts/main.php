@@ -20,19 +20,16 @@
     <!-- Navbar -->
     <div class="first-color">
         <div class="">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg  navbar-light">
                     
-                    <a class="navbar-brand" href="/"><img src="/Assets/images/logo.svg" class="w-75" alt="logo" /></a>
-                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                  
-                
+                <a class="navbar-brand" href="/"><img src="/Assets/images/logo.svg" class="" width="200px" alt="logo" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse col-lg-10  justify-content-end me-4" id="navbarToggler">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/categories">Boutique</a>
+                            <a class="nav-link" href="/boutique">Boutique</a>
                         </li>
                         <li class="nav-item dropdown pointer">
                             <span class="dropdown-toggle nav-link " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,7 +79,7 @@
     </div>
     <!-- Navbar -->
 
-    <div class="first-color">
+    <div class="first-color pb-5">
         <?php if(Application::$app->session->getFlash('success')):?>
         <div class="alert alert-success">
             <?php echo Application::$app->session->getFlash('success') ?>
