@@ -68,6 +68,9 @@ $app->router->post('/addCommande',[CommandeController::class, 'add']);
 $app->router->get('/updateCommande',[CommandeController::class, 'update']);
 $app->router->post('/updateCommande',[CommandeController::class, 'update']);
 
+$app->router->get('/deleteCommande',[CommandeController::class, 'delete']);
+$app->router->post('/deleteCommande',[CommandeController::class, 'delete']);
+
 $app->router->get('/dashAvis',[AvisController::class, 'avisList']);
 $app->router->post('/dashAvis',[AvisController::class, 'avisList']);
 

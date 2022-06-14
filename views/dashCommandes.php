@@ -28,7 +28,7 @@
               <td><?php echo $commande['fk_client']; ?></td>
               <td>
                   <a class="link-secondary" href="./updateCommande?id=<?php echo $commande['id']; ?>"><i class="bi bi-pencil-square"></i></a>
-                  <a class="link-secondary" href="./delete?id=<?php echo $commande['id']; ?>"><i class="bi bi-trash"></i></a> 
+                  <a class="link-secondary" href="./deleteCommande?id=<?php echo $commande['id']; ?>"><i class="bi bi-trash"></i></a> 
               </td>
           </tr>
           <?php endforeach; ?>
