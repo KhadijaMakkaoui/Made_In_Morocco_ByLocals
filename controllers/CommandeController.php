@@ -59,39 +59,47 @@ class CommandeController extends Controller
             'model' => $commande
         ]);    
     }
-    // public function updateTeacher(Request $request)
-    // {
-    //     $commande = new TeacherModel();
-    //     $params = [
-    //         'model' => $commande
-    //     ];
-    //     if ($request->isGet()){  
-    //         $commande->loadData($request->getBody());
-    //         $commande->select($commande->id);
-    //         $commande->loadData($commande->dataList);
-    //         $params = [
-    //             'model' => $commande
-    //         ];      
-    //         return $this->render('updateTeacher', $params);
-    //     }
-    //     if($request->isPost())
-    //     {
-    //         $commande->loadData($request->getBody());
+    public function update(Request $request)
+    {
+        $commande = new Commande();
+        $product =new Produit();
+        $client =new Client();
+        $product->selectAll();
+        $client->selectAll();
+        $params = [
+            'model' => $commande,
+            'product' => $product->dataList,
+            'client' => $client->dataList
+        ];
+        $this->setLayout('dashboard');        
 
-    //         if ($commande->update($commande->id)){
-    //             Application::$app->session->sefFlash('success', 'Thanks for updating Teacher');
-    //             Application::$app->response->redirect('commande');
-    //         }
+        if ($request->isGet()){  
+            $commande->loadData($request->getBody());
+            $commande->select($commande->id);
+            $commande->loadData($commande->dataList);
+            $params['model']= $commande;
+            return $this->render('updateCommande', $params);
+        }
+        
+      
+        if($request->isPost())
+        {
+            $commande->loadData($request->getBody());
 
-    //         return $this->render('updateTeacher', [
-    //             'model' => $commande
-    //         ]);
-    //     }
+            if ($commande->update($commande->id)){
+                Application::$app->session->setFlash('success', 'Thanks for updating Teacher');
+                Application::$app->response->redirect('dashCommandes');
+            }
 
-    //     return $this->render('updateTeacher', [
-    //         'model' => $commande
-    //     ]);    
-    // }
+            return $this->render('updateCommande', [
+                'model' => $commande
+            ]);
+        }
+
+        return $this->render('updateCommande', [
+            'model' => $commande
+        ]);    
+    }
 
     
 
@@ -105,16 +113,16 @@ class CommandeController extends Controller
     //     }
     // }
 
-    // public function deleteTeacher(Request $request)
-    // {
-    //     $commande = new TeacherModel();
-    //     if ($request->isGet()){  
-    //         $commande->loadData($request->getBody());
-    //         if ($commande->delete($commande->id)){ //to integrate validate method
-    //             Application::$app->session->sefFlash('success', 'has successfully deleted');
-    //             Application::$app->response->redirect('commande');
-    //         }
-    //     }
-    // }
+    public function delete(Request $request)
+    {
+        $commande = new Commande();
+        if ($request->isGet()){  
+            $commande->loadData($request->getBody());
+            if ($commande->delete($commande->id)){ //to integrate validate method
+                Application::$app->session->setFlash('success', 'has successfully deleted');
+                Application::$app->response->redirect('dashCommandes');
+            }
+        }
+    }
     
 }

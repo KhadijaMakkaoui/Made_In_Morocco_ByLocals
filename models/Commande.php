@@ -9,6 +9,7 @@ class Commande extends DbModel
 {
  
     // public DateTime $date;
+    public int $id;
     public int $quantite;
     public string $description='';
     public int $fk_client;
