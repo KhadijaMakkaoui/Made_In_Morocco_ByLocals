@@ -1,12 +1,12 @@
-<div class="d-flex justify-content-between">
+<div class="container d-flex justify-content-between">
     <h1 class="mb-4 ">Produits</h1>
     <a href="/addProduct" class="btn btn-outline-dark  h-50">
         <i class="bi bi-plus-lg"></i> Nouveau produit</a>
 
 </div>
-<div class="table-responsive">
+<div class="container table-responsive">
 
-    <table class="table table-bordered table-hover">
+    <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">id</th>
