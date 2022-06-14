@@ -28,8 +28,8 @@ class SiteController extends Controller{
         return $this->render('wishList');
         // return Application::$app->router->renderView('contact');
     }
-    public function categories(){
-        return $this->render('categories');
+    public function boutique(){
+        return $this->render('boutique');
 
         // return Application::$app->router->renderView('contact');
     }
