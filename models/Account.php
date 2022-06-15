@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\Role;
 use app\core\DbModel;
 
 
@@ -29,12 +30,27 @@ class Account extends DbModel
             'email'  => 'Email',
             'password' => 'Mot de passe',
             'confirmPassword'  => 'Confirmation du mot de passe'];
+    }
+    public function setRole(){
+        $role=new Role();
+        // $role->selectAll();
+        // $role=$role->dataList;
 
+        // if($_SERVER['REQUEST_URI']=="/register"){
+        //     $role =$role->findOneN(['role' => 'client'],'roles');
+        //     echo $role->id;
+        //     exit;
+        // }
     }
 
-
     public function save(){
-        $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+        $this->password = password_hash($this->password,PASSWORD_DEFAULT);        
+        
+        if($_SERVER['REQUEST_URI']=="/register"){
+            $this->fk_role =3;  
+        }else if($_SERVER['REQUEST_URI']=="/registerVendeur"){
+            $this->fk_role =2;  
+        }      
         return parent::save();
     }
 
