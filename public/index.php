@@ -26,7 +26,8 @@ $config=[
 $app=new Application(dirname(__DIR__),$config);
 
 $app->router->get('/',[SiteController::class, 'home']);
-$app->router->get('/contact',[SiteController::class, 'contact']);
+// $app->router->get('/contact',[SiteController::class, 'contact']);
+$app->router->get('/contact/{id}',[SiteController::class, 'contact']);
 $app->router->post('/contact',[SiteController::class, 'handleContact']);
 
 $app->router->get('/login',[AuthController::class, 'login']);
@@ -55,6 +56,9 @@ $app->router->post('/dashProducts',[ProductController::class, 'productsList']);
 
 $app->router->get('/addProduct',[ProductController::class, 'add']);
 $app->router->post('/addProduct',[ProductController::class, 'add']);
+//Search by categorie page
+$app->router->get('/productsByCat',[ProductController::class, 'productByCtegorie']);
+$app->router->post('/productsdByCat',[ProductController::class, 'productByCtegorie']);
 
 $app->router->get('/updateProduct',[ProductController::class, 'update']);
 $app->router->post('/updateProduct',[ProductController::class, 'update']);
