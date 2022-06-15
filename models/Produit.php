@@ -58,15 +58,39 @@ class Produit extends DbModel
     }
     public function selectImage()
     {
-        return parent::selectImage();
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM images INNER JOIN $tableName ON images.id=$tableName.fk_image");
+        $statement->execute();
+        $path= $statement->fetch(\PDO::FETCH_ASSOC);
+        return $path;
     }
     public function selectSousCategory()
     {
-        return parent::selectSousCategory();
-    } 
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT sous_categories.* FROM sous_categories INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie");
+        $statement->execute();
+        $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function selectCategory()
     {
-        return parent::selectCategory();
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT categories.* FROM categories INNER JOIN sous_categories ON categories.id=sous_categories.fk_categorie
+         INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie");
+        $statement->execute();
+        $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function selectProductsByCategory(int $id_categorie)
+    {
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT p.* FROM $tableName AS p INNER JOIN sous_categories AS sc ON p.fk_s_categorie=sc.id  
+        INNER JOIN categories AS c ON sc.fk_categorie=c.id WHERE c.id=$id_categorie");
+        $statement->execute();
+        $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
+        // var_dump($result);
+        // exit;
+        return $result;
     }
     public function delete(int $id)
     {
