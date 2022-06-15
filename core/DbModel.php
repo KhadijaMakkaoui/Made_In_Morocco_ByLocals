@@ -35,7 +35,7 @@ abstract class DbModel extends Model {
         return $statement->fetchObject(static::class);
     }
     public function find($where,$table){
-        $tableName = $table;
+        $tableName = $table ?? $this->tableName();
         $attributes=array_keys($where);
         $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr",$attributes));
         array_map(fn($attr)=> "$attr= :$attr",$attributes);

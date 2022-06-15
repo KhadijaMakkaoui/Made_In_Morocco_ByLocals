@@ -4,9 +4,10 @@ namespace app\models;
 
 use app\models\Role;
 use app\core\DbModel;
+use app\core\UserModel;
 
 
-class Account extends DbModel
+class User extends UserModel
 {
 
     //Have to be this class attributeName= register view name=""
@@ -62,6 +63,7 @@ class Account extends DbModel
         ];
     }
     public function getDisplayName():string { 
-        return $this->firstname.' '.$this->lastname;
+        // return $this->firstname.' '.$this->lastname;
+        return 'name';
     }
 }
