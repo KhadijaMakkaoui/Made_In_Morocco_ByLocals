@@ -3,7 +3,7 @@ namespace app\controllers;
 
 use app\core\Request;
 use app\core\Response;
-use app\models\User;
+// use app\models\User;
 use app\models\Account;
 use app\core\Controller;
 use app\core\Application;
