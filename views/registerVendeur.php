@@ -108,10 +108,6 @@ use app\core\form\Form;
                                 <?php echo $form->field($model,'email') ?>
                                 <?php echo $form->field($model,'password')->passwordField() ?>
                                 <?php echo $form->field($model,'confirmPassword')->passwordField() ?>
-
-                                <div class="form-group mx-3">
-                                    <button type="submit" class="form-control btn btn-outline-dark rounded submit">S'inscrire</button>
-                                </div>
                                 <!-- Button submit -->
                                 <div class="form-group mx-3">
                                     <button type="submit" class="form-control btn btn-outline-dark rounded submit">S'inscrire</button>
