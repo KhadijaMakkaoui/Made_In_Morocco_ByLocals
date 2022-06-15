@@ -20,7 +20,7 @@ class User extends UserModel {
     public string $confirmPassword='';
 
     public function tableName():string{
-        return 'users';
+        return 'accounts';
     }
     // public function primaryKey():string{
     //     return 'id';

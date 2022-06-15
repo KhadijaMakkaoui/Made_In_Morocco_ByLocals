@@ -7,7 +7,7 @@ use app\core\DbModel;
 use app\core\UserModel;
 
 
-class User extends UserModel
+class Account extends UserModel
 {
 
     //Have to be this class attributeName= register view name=""
