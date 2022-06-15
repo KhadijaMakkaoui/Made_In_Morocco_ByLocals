@@ -5,7 +5,7 @@ namespace app\models;
 use app\core\DbModel;
 use DateTime;
 
-class UserData extends DbModel
+class Role extends DbModel
 {
         public int $id;
         public string $role='';
