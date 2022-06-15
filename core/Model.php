@@ -115,12 +115,12 @@ abstract class Model{
     public function errorMessages()
     {
         return[
-            self::RULE_REQUIRED => 'This field is required',
-            self::RULE_EMAIL => 'This field must be valid email address',
-            self::RULE_MIN => 'Min length of this field must be {min}',
-            self::RULE_MAX => 'Max length of this field must be {max}',
-            self::RULE_MATCH => 'This field must be the same as {match}',
-            self::RULE_UNIQUE=>  'Record with this {field} already exists'
+            self::RULE_REQUIRED => 'Ce champ est obligatoire',
+            self::RULE_EMAIL => 'Adresse email invalid',
+            self::RULE_MIN => 'Veuillez entrer {min} caracteres au minimum',
+            self::RULE_MAX => 'Veuillez entrer {max} caracteres au maximum',
+            self::RULE_MATCH => 'Ce champ doit être similaire au champ {match}',
+            self::RULE_UNIQUE=>  '{field} déjà existe'
         ];
     }
 
