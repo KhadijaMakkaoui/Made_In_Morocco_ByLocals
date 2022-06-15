@@ -96,12 +96,14 @@ abstract class Model{
      * @return void stocke le resultat dans le tableau errors[attribut][]
      */
     private function addErrorForRule(string $attribute,string $ruleName, $params=[]){
-        $message = $this->errorMessages()[$ruleName] ?? '';
+        //params[]=[self::RULE_MIN='min','min' => 4]
+        $message = $this->errorMessages()[$ruleName] ?? ''; //$message=Min length of this field must be {min};
         foreach ($params as $key => $value) {
             $message=str_replace("{{$key}}", $value, $message);
         }
-        $this->errors[$attribute][]=$message;
+        $this->errors[$attribute][]=$message;//errors['username'][0]=
     }
+    
     public function addError(string $attribute,string $message){
         
         $this->errors[$attribute][]=$message;
