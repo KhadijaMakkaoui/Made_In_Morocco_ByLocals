@@ -39,8 +39,8 @@ $app->router->get('/logout',[AuthController::class, 'logout']);
 $app->router->get('/boutique',[SiteController::class, 'boutique']);
 $app->router->post('/boutique',[SiteController::class, 'boutique']);
 
-$app->router->get('/registerVendeur',[SiteController::class, 'registerVendeur']);
-$app->router->post('/registerVendeur',[SiteController::class, 'registerVendeur']);
+$app->router->get('/registerVendeur',[AuthController::class, 'register']);
+$app->router->post('/registerVendeur',[AuthController::class, 'register']);
 
 $app->router->get('/panier',[SiteController::class, 'panier']);
 $app->router->post('/panier',[SiteController::class, 'panier']);

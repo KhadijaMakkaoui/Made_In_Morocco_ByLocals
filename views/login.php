@@ -1,10 +1,15 @@
-
+<?php 
+/**@var $model \app\models\User */
+?>
+<?php 
+use app\core\form\Form;
+?>
     <section class="login">
         <div class="row justify-content-center align-items-center">
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="wrap d-md-flex justify-content-center align-items-center">
-
+                        <!-- side image -->
                         <div class="col-md-6 col-lg-6 col-xl-4 h-100">
                             <div class="bg-img img-form">
                                 <div class="mask-c">
@@ -28,7 +33,9 @@
                                     </p>
                                 </div>
                             </div> -->
-                            <form action="#" class="signin-form justify-content-center align-items-center">
+                        <?php $form=Form::begin('',"post"); ?>
+
+                            <div class="signin-form justify-content-center align-items-center">
                                 <div class="mb-3">
                                     <h2 class="my-3">Connexion</h2>
                                     <p class=" mb-0">Vous n’avez pas un compte ?
@@ -37,19 +44,23 @@
 
                                 </div>
                                 <!-- Email input -->
-                                <div class="form-outline mb-4">
+                                <!-- <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3"> Addresse email</label>
                                     <input type="email" id="form3Example3" class="form-control" placeholder="Enter une addresse email valide " />
-                                </div>
+                                </div> -->
                                 <!-- Password input -->
-                                <div class="form-outline mb-4">
+                                <!-- <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Mot de passe</label>
                                     <input type="password" id="form3Example4" class="form-control " placeholder="Enterer le mot de passe" />
-                                </div>
-
+                                </div> -->
+                                
+                                <?php echo $form->field($model,'email') ?>
+                                <?php echo $form->field($model,'password')->passwordField() ?>
                                 <div class="form-group">
                                     <button type="submit" class="form-control btn btn-outline-dark rounded submit">Se connecter</button>
                                 </div>
+                                
+                               
                                 <div class="form-group d-md-flex">
                                     <div class="mt-3">
                                         <input type="checkbox">
@@ -58,11 +69,12 @@
 									 
 										</label>
                                     </div>
+                                <?php  Form::end(); ?>
                                     <!-- <div class="w-50 text-md-right">
                                         <a href="#">Forgot Password</a>
                                     </div> -->
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

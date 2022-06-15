@@ -1,9 +1,10 @@
 <?php
 namespace app\controllers;
 
-use app\models\User;
 use app\core\Request;
 use app\core\Response;
+use app\models\User;
+use app\models\Account;
 use app\core\Controller;
 use app\core\Application;
 use app\models\LoginForm;
@@ -17,7 +18,7 @@ class AuthController extends Controller{
         if($request->isPost()){
             $loginForm->loadData($request->getBody());
             if($loginForm->validate() && $loginForm->login()){
-                $response->redirect('/');
+                $response->redirect('/boutique');
                 return;
             }
         }
@@ -28,26 +29,39 @@ class AuthController extends Controller{
     }
     public function register(Request $request){
         
-    $user = new User();
+        $account = new Account();
         
         if($request->isPost()){
-           $user->loadData($request->getBody());
- 
-           if($user->validate() && $user->save()){
+           $account->loadData($request->getBody());
+            $account->setRole();
+           if($account->validate() && $account->save()){
                Application::$app->session->setFlash('success','thanks for registring');
                Application::$app->response->redirect('/');
                 exit;
            }
-           
+           if($_SERVER['REQUEST_URI']=='/register')
            return $this->render('register',[
-               'model' => $user
+               'model' => $account
             ]);
+           if($_SERVER['REQUEST_URI']=='/registerVendeur')
+
+             return $this->render('registerVendeUr',[
+                'model' => $account
+             ]);
         }
         $this->setLayout('main');
 
+        if($_SERVER['REQUEST_URI']=='/register')
         return $this->render('register',[
-            'model' => $user
-        ]);
+            'model' => $account
+         ]);
+       else{
+        return $this->render('registerVendeur',[
+             'model' => $account
+          ]);
+       }
+
+          
     }
     public function logout(Request $request,Response $response){
         Application::$app->logout();

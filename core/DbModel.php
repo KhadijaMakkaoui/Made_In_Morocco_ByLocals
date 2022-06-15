@@ -34,6 +34,18 @@ abstract class DbModel extends Model {
         $statement->execute();
         return $statement->fetchObject(static::class);
     }
+    public function find($where,$table){
+        $tableName = $table ?? $this->tableName();
+        $attributes=array_keys($where);
+        $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr",$attributes));
+        array_map(fn($attr)=> "$attr= :$attr",$attributes);
+        $statement=self::prepareIt("SELECT * FROM $tableName WHERE $sql");
+        foreach ($where as $key => $item) {
+            $statement->bindValue(":$key",$item);
+        }
+        $statement->execute();
+        return $statement->fetchObject(static::class);
+    }
     /**
      * Methode permet l'insertion 
      */
