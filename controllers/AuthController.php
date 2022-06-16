@@ -45,7 +45,7 @@ class AuthController extends Controller{
             ]);
            if($_SERVER['REQUEST_URI']=='/registerVendeur')
 
-             return $this->render('registerVendeUr',[
+             return $this->render('registerVendeur',[
                 'model' => $account
              ]);
         }

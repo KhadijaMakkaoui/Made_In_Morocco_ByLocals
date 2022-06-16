@@ -24,7 +24,7 @@ class ProductController extends Controller
             $img=$product->selectImage();
             $s_categ=$product->selectSousCategory();
             $categ=$product->selectCategory();
-
+           
             $this->setLayout('dashboard');        
             return $this->render('dashProducts', [
                 'produits' => $data,
@@ -33,6 +33,28 @@ class ProductController extends Controller
                 'categorie'=>  $categ
             ]);
         }
+    }
+    public function productByCtegorie()
+    {
+        $product = new Produit();
+        $categ=new Categorie();
+       
+        if(isset($_GET['categorie'])){ 
+             $id_categorie=$_GET['categorie'];
+            if ($product->selectProductsByCategory($id_categorie) ){
+                $categ->select($id_categorie);
+                $distinct_s_cat=$product->selectDistinctSousCategory($id_categorie);
+                
+                $categorie=$categ->dataList;
+                return $this->render('productsByCat', [
+                    'produits' => $product,
+                    'categorie'=>  $categorie,
+                    'distinct_s_cat' => $distinct_s_cat
+
+                ]);
+            }
+        }
+        Application::$app->response->redirect('/boutique');
     }
 
     public function add(Request $request){

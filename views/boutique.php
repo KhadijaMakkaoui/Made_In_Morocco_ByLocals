@@ -72,28 +72,28 @@
             <h2 class="title mb-4">rechercher par catégorie</h2>
             <div class="row justify-content-center recherche-categ">
                 <div class="row w-75 gap-1 mb-1 justify-content-around" style="height:18rem">
-                    <div class="card categ col-sm-12 col-md-5" style="background-image: url( /Assets/images/maison.jpg);background-position: center;background-size: cover;">
+                    <a href="/productsByCat?categorie=1" class="card categ col-sm-12 col-md-5" style="text-decoration:none !important;background-image: url( /Assets/images/maison.jpg);background-position: center;background-size: cover;">
                         <div class="card-body text-light mask-c align-bottom">
-                            <h3 class="text-uppercase">Maison et décoration</h3>
+                            <h3 class="text-uppercase ">Maison et décoration</h3>
                         </div>
-                    </div>
-                    <div class="card categ col-sm-12 col-md-5" style="background-image: url( /Assets/images/accessoires.jpg);">
-                        <div class="card-body text-light mask-c align-bottom">
+                    </a>
+                    <a href="/productsByCat?categorie=2" class="card categ col-sm-12 col-md-5" style="text-decoration:none !important;background-image: url( /Assets/images/accessoires.jpg);">
+                        <div  class="card-body text-light mask-c align-bottom">
                             <h3 class="text-uppercase">Vêtements et accessoires</h3>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="row w-75 gap-1 mb-4 justify-content-around" style="height:18rem">
-                    <div class="card categ col-sm-12 col-md-5" style="background-image: url( /Assets/images/epices.jpg);">
-                        <div class="card-body text-light mask-c align-bottom">
+                    <a href="/productsByCat?categorie=3" class="card categ col-sm-12 col-md-5" style="text-decoration:none !important;background-image: url( /Assets/images/epices.jpg);">
+                        <div  class="card-body text-light mask-c align-bottom">
                             <h3 class="text-uppercase">Herbes, épices et fruit secs</h3>
                         </div>
-                    </div>
-                    <div class="card categ col-sm-12 col-md-5" style="background-image: url( /Assets/images/cosmetique.jpg);">
-                        <div class="card-body text-light mask-c align-bottom">
+                    </a>
+                    <a href="/productsByCat?categorie=4" class="card categ col-sm-12 col-md-5" style="text-decoration:none !important;background-image: url( /Assets/images/cosmetique.jpg);">
+                        <div  class="card-body text-light mask-c align-bottom">
                             <h3 class="text-uppercase">Santé et cosmétique</h3>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 

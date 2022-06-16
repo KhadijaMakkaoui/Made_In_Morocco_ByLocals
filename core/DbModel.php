@@ -97,34 +97,10 @@ abstract class DbModel extends Model {
         $tableName = $this->tableName();
         $statement = self::prepareIt("SELECT * FROM $tableName where id = $id");
         $statement->execute();
-        $this->dataList = $statement->fetch(\PDO::FETCH_OBJ);
+        $this->dataList = $statement->fetch(\PDO::FETCH_ASSOC);
         return true;
     }
-    public function selectImage()
-    {
-        $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT * FROM images INNER JOIN $tableName ON images.id=$tableName.fk_image");
-        $statement->execute();
-        $path= $statement->fetch(\PDO::FETCH_ASSOC);
-        return $path;
-    }
-    public function selectSousCategory()
-    {
-        $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT sous_categories.* FROM sous_categories INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie");
-        $statement->execute();
-        $result= $statement->fetch(\PDO::FETCH_ASSOC);
-        return $result;
-    }
-    public function selectCategory()
-    {
-        $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT categories.* FROM categories INNER JOIN sous_categories ON categories.id=sous_categories.fk_categorie
-         INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie");
-        $statement->execute();
-        $result= $statement->fetch(\PDO::FETCH_ASSOC);
-        return $result;
-    }
+   
     public function delete(int $id)
     {
         $tableName = $this->tableName();
