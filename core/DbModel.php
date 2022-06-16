@@ -97,7 +97,7 @@ abstract class DbModel extends Model {
         $tableName = $this->tableName();
         $statement = self::prepareIt("SELECT * FROM $tableName where id = $id");
         $statement->execute();
-        $this->dataList = $statement->fetch(\PDO::FETCH_OBJ);
+        $this->dataList = $statement->fetch(\PDO::FETCH_ASSOC);
         return true;
     }
    
