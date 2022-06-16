@@ -38,7 +38,13 @@ class Region extends DbModel
     {
         return parent::select($id);
     }
-    
+    public function GetRegionByVille($id_ville){
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM $tableName where id = $id_ville");
+        $statement->execute();
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function delete(int $id)
     {
         return parent::delete($id);
