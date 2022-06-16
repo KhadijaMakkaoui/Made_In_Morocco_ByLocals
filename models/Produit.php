@@ -73,7 +73,7 @@ class Produit extends DbModel
         return $result;
     }
     public function selectCategory()
-    {
+    {  
         $tableName = $this->tableName();
         $statement = self::prepareIt("SELECT categories.* FROM categories INNER JOIN sous_categories ON categories.id=sous_categories.fk_categorie
          INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie");
