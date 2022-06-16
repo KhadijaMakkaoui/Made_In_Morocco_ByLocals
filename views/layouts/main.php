@@ -36,9 +36,9 @@
                                 Nos catégories</span>
                             <ul class="dropdown-menu  ">
                                 <li><a href="/productsByCat?categorie=1" class="nav-link">Maison et Décorations</a></li>
-                                <li><a href="/productsByCat/categorie=2" class="nav-link">Vêtement et accessoirs</a></li>
-                                <li><a href="/productsByCat/categorie=3" class="nav-link">Herbes, épices et fruits secs</a></li>
-                                <li><a href="/productsByCat/categorie=4" class="nav-link">Santé et cosmetique</a></li>
+                                <li><a href="/productsByCat?categorie=2" class="nav-link">Vêtement et accessoirs</a></li>
+                                <li><a href="/productsByCat?categorie=3" class="nav-link">Herbes, épices et fruits secs</a></li>
+                                <li><a href="/productsByCat?categorie=4" class="nav-link">Santé et cosmetique</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#">Blogue et histoires</a></li>
