@@ -72,6 +72,15 @@ class Produit extends DbModel
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+    public function selectDistinctSousCategory($whereCat)
+    {
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT DISTINCT $tableName.fk_s_categorie,sc.* FROM $tableName INNER JOIN sous_categories sc ON sc.id=$tableName.fk_s_categorie
+        WHERE sc.fk_categorie=$whereCat");
+        $statement->execute();
+        $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function selectCategory()
     {  
         $tableName = $this->tableName();
@@ -86,6 +95,16 @@ class Produit extends DbModel
         $tableName = $this->tableName();
         $statement = self::prepareIt("SELECT p.* FROM $tableName AS p INNER JOIN sous_categories AS sc ON p.fk_s_categorie=sc.id  
         INNER JOIN categories AS c ON sc.fk_categorie=c.id WHERE c.id=$id_categorie");
+        $statement->execute();
+        $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
+        // var_dump($result);
+        // exit;
+        return $result;
+    }
+    public function selectProductsBySCategory(int $id_s_categorie)
+    {
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM $tableName WHERE fk_s_categorie=$id_s_categorie");
         $statement->execute();
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         // var_dump($result);
