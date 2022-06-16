@@ -6,8 +6,10 @@ use app\core\Request;
 use app\models\Image;
 use app\models\Produit;
 use app\core\Controller;
+use app\models\UserData;
 use app\core\Application;
 use app\models\Categorie;
+use app\models\Fabriquant;
 use app\models\SousCategorie;
 
 class ProductController extends Controller
@@ -145,15 +147,26 @@ class ProductController extends Controller
 
     
 
-    // public function getTeacher()
-    // {
-    //     $product = new TeacherModel();
-    //     if ($product->select($product->id)){
-    //         return $this->render('product', [
-    //             'model' =>  $product->dataList
-    //         ]);
-    //     }
-    // }
+    public function productDetails()
+    {
+        $product = new Produit();
+        $product->id=$_GET['id'];
+        $categorie=new Categorie();
+        $fabriquant=new Fabriquant();
+        $data=new UserData();
+
+        //  $fabriquant->select($product->id);
+        // $categorie=$product->selectCategory();
+        if ($product->select($_GET['id'])){
+            return $this->render('productDetails', [
+                'product' =>  $product->dataList,
+                'p' => $product,
+                'categorie' => $categorie,
+                'fabriquant' => $fabriquant,
+                'userData' =>$data
+            ]);
+        }
+    }
 
     // public function deleteTeacher(Request $request)
     // {
