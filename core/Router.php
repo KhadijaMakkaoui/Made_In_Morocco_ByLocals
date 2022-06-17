@@ -15,7 +15,7 @@ class Router{
     /**
      * Permet de stocker $callback dans le tableau routes['get'][$path]
      * @param string $path URI
-     * @param string $callback function 
+     * @param string $callback function [controller::class,methode du controlleur] 
      */
     public function get($path,$callback){
         $this->routes['get'][$path] = $callback;
@@ -43,7 +43,7 @@ class Router{
         $callback=$this->routes[$method][$path]??false;
         
         if($callback===false){
-            Application::$app->controller=new SiteController();
+            // Application::$app->controller=new SiteController();
             $this->response->setStatusCode(404);
             return $this->renderView('_404');
         }
@@ -51,7 +51,7 @@ class Router{
             return $this->renderView($callback);
         }
         if(is_array($callback)){
-            Application::$app->controller = new $callback[0]();
+            Application::$app->controller = new $callback[0]();// $callback[0]()= Sitecontroller::class,$callback[1]()= contact
             $callback[0] = Application::$app->controller;
         }
         return call_user_func($callback,$this->request,$this->response);
