@@ -8,7 +8,7 @@ use DateTime;
 class Fabriquant extends DbModel
 {
  
-        public string $CIN;
+        public string $CIN= '';
         public string $profession = '';
         public string $description='';
         public string $activite='' ;
