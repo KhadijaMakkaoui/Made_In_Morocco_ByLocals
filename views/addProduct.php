@@ -1,12 +1,12 @@
 <h1 class="title mb-5">ajouter un produit</h1>
-<form class="row" method="post" action="">
+<form enctype="multipart/form-data" class="row" method="post" action="">
     <div class="col">
         <div class="card" style="width: 18rem">
             <img src="/Assets/images/add-product.png" class="card-img-top" alt="image du produit" />
             <div class="card-body text-center">
                 <!-- <a href="#" class="btn btn-dark">Télécharger une image</a> -->
-                <input type="file" name="" id="" class="w-100" />
-                <input type="number" name="fk_image" id="">
+                <input type="file" name="image" id="" class="w-100" />
+                <!-- <input type="number" name="fk_image" id=""> -->
             </div>
         </div>
     </div>
