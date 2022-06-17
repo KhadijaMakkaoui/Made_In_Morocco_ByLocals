@@ -113,16 +113,25 @@ class ProductController extends Controller
         }
         if($request->isPost())
         {
-            $product->loadData($request->getBody());
+            $image=new Image();
+            // $product->loadData($request->getBody());
+            $image->loadData($request->getBody());
 
-            if ($product->save()){
+            if ($image->save()){
                 Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
-                Application::$app->response->redirect('dashProducts');
             }
             $this->setLayout('dashboard');        
             return $this->render('addProduct', [
-                'model' => $product
+                'model' => $image
             ]);
+            // if ($product->save()){
+            //     Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+            //     Application::$app->response->redirect('dashProducts');
+            // }
+            // $this->setLayout('dashboard');        
+            // return $this->render('addProduct', [
+            //     'model' => $product
+            // ]);
         }
         $this->setLayout('dashboard');        
         return $this->render('addProduct', [
