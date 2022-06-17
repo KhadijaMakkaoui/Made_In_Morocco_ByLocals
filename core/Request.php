@@ -48,13 +48,13 @@ class Request{
         }
         if ($this->method() === 'post')
         {
-            $_POST['image'] = null;
+            $_POST['chemin'] = null;
             foreach($_POST as $key => $value)
             {
-                if(!empty($_FILES['image']['name']) && $key === 'image') {
+                if(!empty($_FILES['chemin']['name']) && $key === 'chemin') {
 
-                    $filename = $_FILES['image']['name'];
-                    $filetmpname = $_FILES['image']['tmp_name'];
+                    $filename = $_FILES['chemin']['name'];
+                    $filetmpname = $_FILES['chemin']['tmp_name'];
                     $folder = "files/";
 
 
