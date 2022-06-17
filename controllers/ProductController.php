@@ -6,18 +6,20 @@ use app\core\Request;
 use app\models\Image;
 use app\models\Produit;
 use app\core\Controller;
+use app\models\UserData;
 use app\core\Application;
 use app\models\Categorie;
+use app\models\Fabriquant;
 use app\models\SousCategorie;
 
 class ProductController extends Controller
 {   
-    // public $product = new Produit();
-    // public $image =new Image();
+    /**
+     * Affichage des produits
+     */
     public function productsList()
     {
-
-         $product = new Produit();
+        $product = new Produit();
         //  $image =new Image();
         if ($product->selectAll()){
             $data = $product->dataList;
@@ -34,6 +36,9 @@ class ProductController extends Controller
             ]);
         }
     }
+    /**
+     * Afficher les produits d'une categorie
+     */
     public function productByCtegorie()
     {
         $product = new Produit();
@@ -56,7 +61,32 @@ class ProductController extends Controller
         }
         Application::$app->response->redirect('/boutique');
     }
+    /**
+     * Afficher la page des details du produit séléctionner
+     */
+    public function productDetails()
+    {
+        $product = new Produit();
+        $product->id=$_GET['id'];
+        $categorie=new Categorie();
+        $fabriquant=new Fabriquant();
+        $data=new UserData();
 
+        //  $fabriquant->select($product->id);
+        // $categorie=$product->selectCategory();
+        if ($product->select($_GET['id'])){
+            return $this->render('productDetails', [
+                'product' =>  $product->dataList,
+                'p' => $product,
+                'categorie' => $categorie,
+                'fabriquant' => $fabriquant,
+                'userData' =>$data
+            ]);
+        }
+    }
+    /**
+     * Ajouter un produit
+     */
     public function add(Request $request){
         $product = new Produit();
         $categorie=new Categorie();
@@ -99,6 +129,9 @@ class ProductController extends Controller
             'model' => $product
         ]);    
     }
+    /**
+     * Modifier un produit
+     */
     public function update(Request $request)
     {
         $product = new Produit();
@@ -143,17 +176,6 @@ class ProductController extends Controller
         ]);    
     }
 
-    
-
-    // public function getTeacher()
-    // {
-    //     $product = new TeacherModel();
-    //     if ($product->select($product->id)){
-    //         return $this->render('product', [
-    //             'model' =>  $product->dataList
-    //         ]);
-    //     }
-    // }
 
     // public function deleteTeacher(Request $request)
     // {

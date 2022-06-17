@@ -3,23 +3,24 @@
 namespace app\models;
 
 use app\core\DbModel;
+use DateTime;
 
-
-class Categorie extends DbModel
+class Region extends DbModel
 {
-    public string $libelle;
-    public string $description;
+        public int $id;
+        public string $nom='';
+        public int $fk_image;
 
     public function tableName(): string
     {
-        return 'categories';
+        return 'regions';
     }
     public function attributes(): array
     {
         return [ 
-            'libelle',            
-            'description'
-            ];
+            'nom',            
+            'fk_image'
+        ];
     }
 
     public function update(int $id)
@@ -32,11 +33,18 @@ class Categorie extends DbModel
         return parent::selectAll();
     }
 
+
     public function select(int $id)
     {
         return parent::select($id);
     }
-
+    public function GetRegionByVille($id_ville){
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM $tableName where id = $id_ville");
+        $statement->execute();
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function delete(int $id)
     {
         return parent::delete($id);
@@ -46,16 +54,7 @@ class Categorie extends DbModel
     {
         return parent::save();
     }
-
-    public function categorieOfSCategorie($id_s_categorie)
-    {  
-        $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT c.* FROM $tableName as c INNER JOIN sous_categories ON c.id=sous_categories.fk_categorie
-        WHERE sous_categories.id=$id_s_categorie");
-        $statement->execute();
-        $result= $statement->fetch(\PDO::FETCH_ASSOC);
-        return $result;
-    }
+  
     public function rules(): array
     {
         return [

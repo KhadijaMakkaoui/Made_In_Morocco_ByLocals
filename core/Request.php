@@ -46,10 +46,28 @@ class Request{
             }
             return $body;
         }
-        if ($this->method() === 'post'){
-            foreach ($_POST as $key => $value){
-                $body[$key]=filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+        if ($this->method() === 'post')
+        {
+            $_POST['image'] = null;
+            foreach($_POST as $key => $value)
+            {
+                if(!empty($_FILES['image']['name']) && $key === 'image') {
+
+                    $filename = $_FILES['image']['name'];
+                    $filetmpname = $_FILES['image']['tmp_name'];
+                    $folder = "files/";
+
+
+                    if(move_uploaded_file($filetmpname, $folder.$filename))
+                    {
+                        $body[$key] = $filename; // name of the image 
+                    }
+                }
+                else {
+                    $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
             }
+        
             return $body;
         }
     }

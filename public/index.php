@@ -59,6 +59,9 @@ $app->router->post('/addProduct',[ProductController::class, 'add']);
 //Search by categorie page
 $app->router->get('/productsByCat',[ProductController::class, 'productByCtegorie']);
 $app->router->post('/productsdByCat',[ProductController::class, 'productByCtegorie']);
+//Details d'un produit
+$app->router->get('/productDetails',[ProductController::class, 'productDetails']);
+$app->router->post('/productDetails',[ProductController::class, 'productDetails']);
 
 $app->router->get('/updateProduct',[ProductController::class, 'update']);
 $app->router->post('/updateProduct',[ProductController::class, 'update']);
