@@ -51,6 +51,9 @@ class Image extends DbModel
     {
         return parent::save();
     }
+    public function getLastInsetedId(){
+        return parent::getLastInsetedId();
+    }
     public function rules(): array
     {
         return [
