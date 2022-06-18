@@ -91,47 +91,55 @@ class ProductController extends Controller
         $product = new Produit();
         $categorie=new Categorie();
         $s_categorie=new SousCategorie();
+        $image=new Image();
+
         $s_categorie->selectAll();
         $categorie->selectAll();
+        $img=$product->selectImage();
+
+        $s_categ=$s_categorie->dataList;
+        $categ=$categorie->dataList;
+
         if ($request->isGet()){
             if ($product->selectAll()){
                 $data = $product->dataList;
-                $img=$product->selectImage();
-                $s_categ=$s_categorie->dataList;
-                $categ=$categorie->dataList;
-                
-                // var_dump($categ);
-                $this->setLayout('dashboard');        
+                $this->setLayout('dashboard'); 
+                       
                 return $this->render('addProduct', [
                     'produits' => $data,
                     'image'   => $img,
                     's_categories'=>  $s_categ,
-                    'categories'=>  $categ
+                    'catego-ries'=>  $categ
                 ]);
             }
             // return $this->render('productAdd', $params);
         }
         if($request->isPost())
         {
-            $image=new Image();
-            // $product->loadData($request->getBody());
-            $image->loadData($request->getBody());
+            if(isset($_POST['submit_img'])){
+                $image->loadData($request->getBody());
 
-            if ($image->save()){
-                Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+                if ($image->save()){
+                    Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+                    $id_inserted=$image->getLastInsetedId();
+                    // $isImageUploaded=true;
+                }
+                $this->setLayout('dashboard');        
+                return $this->render('addProduct', [
+                    'image' => $image,
+                    'id_img' => $id_inserted,
+                    's_categories'=>  $s_categ,
+                    'catego-ries'=>  $categ
+                ]);
             }
-            $this->setLayout('dashboard');        
-            return $this->render('addProduct', [
-                'model' => $image
-            ]);
-            // if ($product->save()){
-            //     Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
-            //     Application::$app->response->redirect('dashProducts');
-            // }
-            // $this->setLayout('dashboard');        
-            // return $this->render('addProduct', [
-            //     'model' => $product
-            // ]);
+            if(isset($_POST['submit_data'])){
+                    $product->loadData($request->getBody());
+                    if ($product->save() && $product->fk_image){
+                        Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+                        Application::$app->response->redirect('dashProducts');
+                    }
+            }
+
         }
         $this->setLayout('dashboard');        
         return $this->render('addProduct', [
