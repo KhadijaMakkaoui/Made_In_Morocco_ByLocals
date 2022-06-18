@@ -79,7 +79,7 @@ class Application{
 		$primaryKey = $user->primaryKey();
 		$primaryValue=$user->{$primaryKey};
 		Application::$app->session->set('user',$primaryValue);
-		// $this->session->set('user',$primaryValue);
+		$_SESSION['user'] = Application::$app->session->get('user');
 		return true;
 	}
 	public static function isGuest(){
