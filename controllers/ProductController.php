@@ -20,19 +20,24 @@ class ProductController extends Controller
     public function productsList()
     {
         $product = new Produit();
+        $s_categorie=new SousCategorie();
+        $obj_img=new Image();
         //  $image =new Image();
         if ($product->selectAll()){
             $data = $product->dataList;
             $img=$product->selectImage();
-            $s_categ=$product->selectSousCategory();
+            $product_s_categ=$product->selectSousCategory();
             $categ=$product->selectCategory();
            
             $this->setLayout('dashboard');        
             return $this->render('dashProducts', [
                 'produits' => $data,
                 'image'   => $img,
-                's_categorie'=>  $s_categ,
-                'categorie'=>  $categ
+                's_categorie'=>  $product_s_categ,
+                'categorie'=>  $categ,
+                'obj_s_categ' => $s_categorie,
+                'obj_image' => $obj_img
+
             ]);
         }
     }
@@ -89,16 +94,16 @@ class ProductController extends Controller
      */
     public function add(Request $request){
         $product = new Produit();
-        $categorie=new Categorie();
+        // $categorie=new Categorie();
         $s_categorie=new SousCategorie();
         $image=new Image();
 
         $s_categorie->selectAll();
-        $categorie->selectAll();
+        // $categorie->selectAll();
         $img=$product->selectImage();
 
         $s_categ=$s_categorie->dataList;
-        $categ=$categorie->dataList;
+        // $categ=$categorie->dataList;
 
         if ($request->isGet()){
             if ($product->selectAll()){
@@ -109,7 +114,7 @@ class ProductController extends Controller
                     'produits' => $data,
                     'image'   => $img,
                     's_categories'=>  $s_categ,
-                    'catego-ries'=>  $categ
+                    // 'catego-ries'=>  $categ
                 ]);
             }
             // return $this->render('productAdd', $params);
@@ -129,7 +134,7 @@ class ProductController extends Controller
                     'image' => $image,
                     'id_img' => $id_inserted,
                     's_categories'=>  $s_categ,
-                    'catego-ries'=>  $categ
+                    // 'catego-ries'=>  $categ
                 ]);
             }
             if(isset($_POST['submit_data'])){
