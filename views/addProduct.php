@@ -61,7 +61,8 @@
             <label class="form-label" for="form6Example7">Description</label>
             <textarea class="form-control" name="description" id="form6Example7" rows="4 " placeholder="Description du produit"></textarea>
         </div>
-        <input type="hidden" name="fk_fabriquant" value="1">
+        <input type="hidden" name="fk_image" value="<?php if(isset($id_img)) echo $id_img;?>">
+        <input type="hidden" name="fk_fabriquant" value="<?php if(isset($_SESSION['fabriquant_id'])) echo $_SESSION['fabriquant_id']?>">
     <!-- Submit button -->
     <button type="submit" name="submit_data" class="btn btn-outline-dark w-100 mb-4">
            Ajouter

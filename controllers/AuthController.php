@@ -8,16 +8,19 @@ use app\models\Account;
 use app\core\Controller;
 use app\core\Application;
 use app\models\LoginForm;
+use app\models\Fabriquant;
 
 
 class AuthController extends Controller{
     
     public function login(Request $request,Response $response){
         $loginForm = new LoginForm();
-        
+        $fabriqant=new Fabriquant();
+
         if($request->isPost()){
             $loginForm->loadData($request->getBody());
             if($loginForm->validate() && $loginForm->login()){
+                $fabriqant->getLoggedFabriquant();
                 $response->redirect('/boutique');
                 return;
             }

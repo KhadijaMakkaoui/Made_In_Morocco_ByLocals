@@ -20,6 +20,12 @@ abstract class DbModel extends Model {
         return Application::$app->db->pdo->prepare($sql);
     }
     /**
+     * Permet de retourner le dernier ID inserer dans la base donnée
+     */
+    public function getLastInsetedId(){
+        return Application::$app->db->pdo->lastInsertId();
+    }
+    /**
      * @param array $where associative array
      */
     public static function findOne($where){

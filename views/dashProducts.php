@@ -1,3 +1,5 @@
+
+
 <div class="container d-flex justify-content-between">
     <h1 class="mb-4 ">Produits</h1>
     <a href="/addProduct" class="btn btn-outline-dark  h-50">
@@ -16,18 +18,27 @@
                 <th scope="col">Quantité en stock</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Sous categorie</th>
-                <th scope="col">Categorie</th>
                 <th scope="col">Opérations</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($produits as $produit) : ?>
+                <?php 
+                    $obj_s_categ->select($produit['fk_s_categorie']); 
+                    $libelle=$obj_s_categ->dataList['libelle']; 
+                    // var_dump($produit['fk_image']);
+                    // exit;
+                    $fk_img=(int) $produit['fk_image'];
+                    $obj_image->select($fk_img);
+                   
+                    // $chemin=$obj_image->dataList['chemin'];  
+                    ?>
             <tr>
                 <td>
                     <?php echo $produit['id']; ?>
                 </td>
                 <td>
-                    <img src="../Assets/images/<?php echo $image['chemin'] ?>" id="" class="" width="100px" />
+                    <img src="/files/<?php echo $obj_image->dataList['chemin'] ?>" alt="<?php echo $obj_image->dataList['chemin'] ?>" class="" width="70px" />
                 </td>
                 <td>
                     <?php echo $produit['titre']; ?>
@@ -42,11 +53,9 @@
                     <?php echo $produit['prix']; ?>
                 </td>
                 <td>
-                    <?php echo $s_categorie['libelle']; ?>
+                    <?php echo $libelle; ?>
                 </td>
-                <td>
-                    <?php echo $categorie['libelle']; ?>
-                </td>
+                
                 <td>
                     <a class="link-secondary" href="./productUpdate?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
                     <a class="link-secondary" href="./delete?id=<?php echo $produit['id']; ?>"><i class="bi bi-trash"></i></a>
