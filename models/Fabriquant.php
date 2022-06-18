@@ -37,6 +37,10 @@ class Fabriquant extends DbModel
     {
         return parent::selectAll();
     }
+    /**
+     * Permet de creer la variable super globale ['fabriquant_id'] et stocker dans laquelle l'id du fabriquant dont fk_account
+     * est egual à la session $_SESSION['user']
+     */
    public function getLoggedFabriquant(){
         $tableName = $this->tableName();
         $id_user=$_SESSION['user'];
