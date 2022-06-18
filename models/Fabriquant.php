@@ -37,6 +37,15 @@ class Fabriquant extends DbModel
     {
         return parent::selectAll();
     }
+   public function getLoggedFabriquant(){
+        $tableName = $this->tableName();
+        $id_user=$_SESSION['user'];
+        $statement = self::prepareIt("SELECT * FROM $tableName where fk_account =$id_user ");
+        $statement->execute();
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        $_SESSION['fabriquant_id']=$result['id'];
+        return true;
+   }
     // public function selectAll($attr=[])
     // {
     //     return parent::selectAll();
