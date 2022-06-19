@@ -35,7 +35,7 @@
                             $obj_image->select($fk_img);
                             ?>  
                             
-                                <a href="/productDetails?id=<?php echo  $value['id'] ?>" class="link-dark text-decoration-none">
+                                <a href="/productDetails?id=<?php echo  $value['id'] ?>&cat=<?php echo  $_GET['categorie'] ?>" class="link-dark text-decoration-none">
                                     <div class="card first-color border-white shadow" style="width: 20rem;">
                                     <img class="card-img-top" src="/files/<?php echo $obj_image->dataList['chemin'] ?>" alt="<?php echo $obj_image->dataList['chemin'] ?>" class="" width="70px" />
 
