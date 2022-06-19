@@ -1,12 +1,22 @@
 <?php #var_dump($product);exit;
 $fab=  $fabriquant->select($product['fk_fabriquant']);
 $fab=  $fabriquant->dataList;
-$userData->select($fab['id']);
-$data=$userData->dataList;
+// var_dump($fab);exit;
+$fab_data->select($fab['fk_account']);
+// var_dump($fab_data); exit;
+$data_fab=$fab_data->dataList;
+//img produit
 $fk_img=(int) $product['fk_image'];
 $obj_image->select($fk_img);
 $img=$obj_image->dataList;
-// var_dump();
+//img fabriquant
+$fk_img=(int) $data_fab['fk_image'];
+$obj_image->select($fk_img);
+$fab_img=$obj_image->dataList;
+
+$reg=$region->GetRegionByVille($data_fab['fk_ville']);
+
+// var_dump($data_fab);
 ?>
 <div class="row product-Page">
     <!--product details-->
@@ -42,18 +52,6 @@ $img=$obj_image->dataList;
                             <p><?php echo  $product['description'] ?>
                             </p>
                         </div>
-
-                        <!-- <div class="mt-5"> <span class="fw-bold">Color</span>
-                            <div class="colors">
-                                <ul id="marker">
-                                    <li id="marker-1"></li>
-                                    <li id="marker-2"></li>
-                                    <li id="marker-3"></li>
-                                    <li id="marker-4"></li>
-                                    <li id="marker-5"></li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="row my-5 gap-1">
                             <!-- Quantité -->
                             <div class="counter d-inline-flex col-lg-4 justify-content-center">
@@ -86,7 +84,8 @@ $img=$obj_image->dataList;
                             <div class="">
                                 <span class="fw-bold">Categorie : </span>
                                 <span class="text-secondary"> <?php 
-                                $c=$categorie->categorieOfSCategorie($product['id']);
+                                $categorie->select($_GET['cat']);
+                                $c=$categorie->dataList;
                                 echo  $c['libelle'] 
                                 // var_dump($c)
                                 ?> </span>
@@ -179,17 +178,16 @@ $img=$obj_image->dataList;
         <div class="card-body text-center">
             <h4 class="title">made by</h4>
             <img
-            src="Assets/images/maker.jpg"
+            src="/files/<?php echo $fab_img['chemin']?>"
             alt="avatar"
             class="rounded-circle img-fluid"
             style="width: 150px; height: 150px"
             />
-            <h5 class="my-3 title fw-normal"><?php echo $data['prenom'].' '.$data['nom'] ?></h5>
+            <h5 class="my-3 title fw-normal"><?php echo $data_fab['prenom'].' '.$data_fab['nom'] ?></h5>
             <p class="mb-1"><?php echo $fab['profession'] ?></p>
-            <p class="mb-4"><?php echo $data['fk_ville'] ?></p>
+            <p class="mb-4"><?php echo $reg['nom'] ?></p>
             <p class="text-secondary mb-4 text-break">
             <?php echo $fab['description'] ?>
-            <?php var_dump($fab) ?>
             </p>
 
             <div class="d-flex justify-content-center mb-2">
@@ -299,6 +297,7 @@ $img=$obj_image->dataList;
 
 </div>
 <!-- produits similaires -->
+<?php # $obj_product->selectProductsByCategory(2);?>
 <div class="produit-pop">
     <h2 class="title m-5">produits similaires</h2>
     <div class="d-flex flex-row flex-nowrap overflow-auto justify-content-between gap-5">
