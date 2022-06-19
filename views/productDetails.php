@@ -1,12 +1,25 @@
 <?php #var_dump($product);exit;
 $fab=  $fabriquant->select($product['fk_fabriquant']);
 $fab=  $fabriquant->dataList;
-$userData->select($fab['id']);
-$data=$userData->dataList;
-// var_dump($data)
-?>;
+// var_dump($fab);exit;
+$fab_data->select($fab['fk_account']);
+// var_dump($fab_data); exit;
+$data_fab=$fab_data->dataList;
+//img produit
+$fk_img=(int) $product['fk_image'];
+$obj_image->select($fk_img);
+$img=$obj_image->dataList;
 
- ?>
+
+//img fabriquant
+$fk_img=(int) $data_fab['fk_image'];
+$obj_image->select($fk_img);
+$fab_img=$obj_image->dataList;
+
+$reg=$region->GetRegionByVille($data_fab['fk_ville']);
+
+// var_dump($data_fab);
+?>
 <div class="row product-Page">
     <!--product details-->
     <div class="my-5">
@@ -15,7 +28,7 @@ $data=$userData->dataList;
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
                         <div class="main_image">
-                            <img src="/Assets/images/pouf.jpg" id="main_product_image" class="w-100" />
+                            <img src="/files/<?php echo $img['chemin']?>" id="main_product_image" class="w-100" alt="<?php echo $img['chemin']?>" />
                         </div>
                     </div>
                 </div>
@@ -41,18 +54,6 @@ $data=$userData->dataList;
                             <p><?php echo  $product['description'] ?>
                             </p>
                         </div>
-
-                        <!-- <div class="mt-5"> <span class="fw-bold">Color</span>
-                            <div class="colors">
-                                <ul id="marker">
-                                    <li id="marker-1"></li>
-                                    <li id="marker-2"></li>
-                                    <li id="marker-3"></li>
-                                    <li id="marker-4"></li>
-                                    <li id="marker-5"></li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="row my-5 gap-1">
                             <!-- Quantité -->
                             <div class="counter d-inline-flex col-lg-4 justify-content-center">
@@ -85,9 +86,9 @@ $data=$userData->dataList;
                             <div class="">
                                 <span class="fw-bold">Categorie : </span>
                                 <span class="text-secondary"> <?php 
-                                $c=$categorie->categorieOfSCategorie($product['id']);
+                                $categorie->select($_GET['cat']);
+                                $c=$categorie->dataList;
                                 echo  $c['libelle'] 
-                                // var_dump($c)
                                 ?> </span>
 
                             </div>
@@ -178,17 +179,16 @@ $data=$userData->dataList;
         <div class="card-body text-center">
             <h4 class="title">made by</h4>
             <img
-            src="Assets/images/maker.jpg"
+            src="/files/<?php echo $fab_img['chemin']?>"
             alt="avatar"
             class="rounded-circle img-fluid"
             style="width: 150px; height: 150px"
             />
-            <h5 class="my-3 title fw-normal"><?php echo $data['prenom'].' '.$data['nom'] ?></h5>
+            <h5 class="my-3 title fw-normal"><?php echo $data_fab['prenom'].' '.$data_fab['nom'] ?></h5>
             <p class="mb-1"><?php echo $fab['profession'] ?></p>
-            <p class="mb-4"><?php echo $data['fk_ville'] ?></p>
+            <p class="mb-4"><?php echo $reg['nom'] ?></p>
             <p class="text-secondary mb-4 text-break">
             <?php echo $fab['description'] ?>
-            <?php var_dump($fab) ?>
             </p>
 
             <div class="d-flex justify-content-center mb-2">
@@ -298,109 +298,44 @@ $data=$userData->dataList;
 
 </div>
 <!-- produits similaires -->
+<?php  $p_similaire=$obj_product->selectProductsByCategory($_GET['cat']);
+?>
 <div class="produit-pop">
     <h2 class="title m-5">produits similaires</h2>
     <div class="d-flex flex-row flex-nowrap overflow-auto justify-content-between gap-5">
+    <?php 
+    $i=0;
+    foreach ($p_similaire as $p):
+        $obj_image->select($p['fk_image']);
+        $img=$obj_image->dataList;?>  
+    
+        <?php if($i<7 && $p['id']!=$_GET['id']):?>    
+
         <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
+                <div class="card shadow" style="width: 18rem">
+                    <img clas="card-img-top" src="/files/<?php echo $img['chemin']?>" alt=" " />
+                    <div class="card-body text-center">
+                        <h5><?php echo $p['titre']?></h5>
+                        <p>
+                        <?php echo $p['description']?>                        </p>
+                        <p>
+                            Categorie: <?php echo $c['libelle']?> PRIX:
+                            <span class="price"><?php echo $p['prix']?> DH</span>
+                        </p>
+                        <a href="/panier?id=<?php echo $p['id']?>">
+                            <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
+                    Ajouter au panier
+                    </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        <?php endif;?>    
+        <?php $i++?>    
+
+    <?php endforeach?>    
+
 </div>
 </div>

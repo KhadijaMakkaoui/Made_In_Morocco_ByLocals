@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\core\Request;
 use app\models\Image;
 use app\core\Response;
+use app\models\Region;
 use app\models\Produit;
 use app\core\Controller;
 use app\models\UserData;
@@ -212,7 +213,7 @@ class ProductController extends Controller
                     'categorie'=>  $categorie,
                     'distinct_s_cat' => $distinct_s_cat,
                     'obj_image' => $image
-
+                    
                 ]);
             }
         }
@@ -224,20 +225,30 @@ class ProductController extends Controller
     public function productDetails()
     {
         $product = new Produit();
+        $obj_product = $product;
+
         $product->id=$_GET['id'];
+
         $categorie=new Categorie();
         $fabriquant=new Fabriquant();
+        $fab_data=new UserData();
         $data=new UserData();
-
-        //  $fabriquant->select($product->id);
-        // $categorie=$product->selectCategory();
+        $image=new Image();
+        $region=new Region();
+      
         if ($product->select($_GET['id'])){
+            $dataList=$product->dataList;
+            
             return $this->render('productDetails', [
-                'product' =>  $product->dataList,
+                'product' => $dataList ,
                 'p' => $product,
                 'categorie' => $categorie,
                 'fabriquant' => $fabriquant,
-                'userData' =>$data
+                'fab_data' => $fab_data,
+                'userData' =>$data,
+                'obj_image' => $image,
+                'region' => $region,
+                'obj_product' => $obj_product
             ]);
         }
     }
