@@ -38,7 +38,7 @@
     <!-- Text input -->
     <div class="form-outline mb-4">
             <label class="form-label" for="form6Example3">Prix</label>
-            <input type="number" name="prix" id="form6Example3" class="form-control" placeholder="Prix du produit" min="0" />
+            <input type="number" name="prix" id="form6Example3" class="form-control" step="any" placeholder="Prix du produit" min="0" />
         </div>
     <!-- select Sous categories -->
     <div class="mb-4">

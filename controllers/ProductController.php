@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Request;
 use app\models\Image;
+use app\core\Response;
 use app\models\Produit;
 use app\core\Controller;
 use app\models\UserData;
@@ -14,6 +15,7 @@ use app\models\SousCategorie;
 
 class ProductController extends Controller
 {   
+    //=============DASHBOARD=====================
     /**
      * Affichage des produits
      */
@@ -44,51 +46,7 @@ class ProductController extends Controller
     /**
      * Afficher les produits d'une categorie
      */
-    public function productByCtegorie()
-    {
-        $product = new Produit();
-        $categ=new Categorie();
-       
-        if(isset($_GET['categorie'])){ 
-             $id_categorie=$_GET['categorie'];
-            if ($product->selectProductsByCategory($id_categorie) ){
-                $categ->select($id_categorie);
-                $distinct_s_cat=$product->selectDistinctSousCategory($id_categorie);
-                
-                $categorie=$categ->dataList;
-                return $this->render('productsByCat', [
-                    'produits' => $product,
-                    'categorie'=>  $categorie,
-                    'distinct_s_cat' => $distinct_s_cat
-
-                ]);
-            }
-        }
-        Application::$app->response->redirect('/boutique');
-    }
-    /**
-     * Afficher la page des details du produit séléctionner
-     */
-    public function productDetails()
-    {
-        $product = new Produit();
-        $product->id=$_GET['id'];
-        $categorie=new Categorie();
-        $fabriquant=new Fabriquant();
-        $data=new UserData();
-
-        //  $fabriquant->select($product->id);
-        // $categorie=$product->selectCategory();
-        if ($product->select($_GET['id'])){
-            return $this->render('productDetails', [
-                'product' =>  $product->dataList,
-                'p' => $product,
-                'categorie' => $categorie,
-                'fabriquant' => $fabriquant,
-                'userData' =>$data
-            ]);
-        }
-    }
+   
     /**
      * Ajouter un produit
      */
@@ -134,7 +92,6 @@ class ProductController extends Controller
                     'image' => $image,
                     'id_img' => $id_inserted,
                     's_categories'=>  $s_categ,
-                    // 'catego-ries'=>  $categ
                 ]);
             }
             if(isset($_POST['submit_data'])){
@@ -154,61 +111,135 @@ class ProductController extends Controller
     /**
      * Modifier un produit
      */
-    public function update(Request $request)
+    public function update(Request $request,Response $response)
     {
         $product = new Produit();
-        $categorie=new Categorie();
+        $image=new Image();
         $s_categorie=new SousCategorie();
         $s_categorie->selectAll();
-        $categorie->selectAll();
-        if ($request->isGet()){
-            if ($product->selectAll()){
-                $data = $product->dataList;
-                $img=$product->selectImage();
-                $s_categ=$s_categorie->dataList;
-                $categ=$categorie->dataList;
+       
+        $s_categList=$s_categorie->dataList;
 
-                // var_dump($categ);
+        if ($request->isGet()){
+            $_SESSION['id_prod']=$_GET['id'];
+                $id_prod=$request->getBody();
+                $product->select($id_prod['id']);
+
+                $data = $product->dataList;
+
+                $s_categorie->select($data['fk_s_categorie']);
+                $p_s_cat= $s_categorie->dataList;
+                $img=$product->selectImage();
                 $this->setLayout('dashboard');        
                 return $this->render('updateProduct', [
-                    'model' => $product,
+                    'produit' => $data,
                     'image'   => $img,
-                    's_categories'=>  $s_categ,
-                    'categories'=>  $categ
+                    's_categories'=>  $s_categList,
+                    'p_s_cat' => $p_s_cat
                 ]);
-            }
             // return $this->render('productAdd', $params);
         }
         if($request->isPost())
         {
-            $product->loadData($request->getBody());
+           //Get data
+            $product->select($_SESSION['id_prod']);
 
-            if ($product->update($product->id)){
-                Application::$app->session->setFlash('success', 'Thanks for updating Teacher');
-                Application::$app->response->redirect('product');
+            $data = $product->dataList;
+            
+            $s_categorie->select($data['fk_s_categorie']);
+            $p_s_cat= $s_categorie->dataList;
+            $img=$product->selectImage();
+            $this->setLayout('dashboard');        
+            
+
+            if(isset($_POST['submit_img'])){
+   
+                $image->loadData($request->getBody());
+                if ($image->update($data['fk_image'])){
+                  
+                    return $this->render("updateProduct", [
+                        'produit' => $data,
+                        'image'   => $img,
+                        's_categories'=>  $s_categList,
+                        'p_s_cat' => $p_s_cat
+                    ]);
+                }
+            }
+            if(isset($_POST['submit_data'])){
+                $product->loadData($request->getBody());
+
+                if ($product->update($_SESSION['id_prod'])){
+                    Application::$app->response->redirect('dashProducts');
+                }
             }
 
-            return $this->render('updateProduct', [
-                'model' => $product
-            ]);
         }
-
-        return $this->render('updateProduct', [
+        $this->setLayout('dashboard');        
+        return $this->render('addProduct', [
             'model' => $product
-        ]);    
+        ]); 
     }
 
 
-    // public function deleteTeacher(Request $request)
-    // {
-    //     $product = new TeacherModel();
-    //     if ($request->isGet()){  
-    //         $product->loadData($request->getBody());
-    //         if ($product->delete($product->id)){ //to integrate validate method
-    //             Application::$app->session->sefFlash('success', 'has successfully deleted');
-    //             Application::$app->response->redirect('product');
-    //         }
-    //     }
-    // }
+    public function delete(Request $request)
+    {
+        $p = new Produit();
+        if ($request->isGet()){  
+            $p->loadData($request->getBody());
+            
+            if ($p->delete($p->id)){ //to integrate validate method
+                Application::$app->session->setFlash('success', 'has successfully deleted');
+                Application::$app->response->redirect('dashProducts');
+            }
+        }
+    } 
+    //=============CLIENT=====================
+    
+    public function productByCtegorie()
+    {
+        $product = new Produit();
+        $categ=new Categorie();
+        $image = new Image();
+        if(isset($_GET['categorie'])){ 
+             $id_categorie=$_GET['categorie'];
+            if ($product->selectProductsByCategory($id_categorie) ){
+                $categ->select($id_categorie);
+                $distinct_s_cat=$product->selectDistinctSousCategory($id_categorie);
+                
+                $categorie=$categ->dataList;
+                return $this->render('productsByCat', [
+                    'produits' => $product,
+                    'categorie'=>  $categorie,
+                    'distinct_s_cat' => $distinct_s_cat,
+                    'obj_image' => $image
+
+                ]);
+            }
+        }
+        Application::$app->response->redirect('/boutique');
+    }
+    /**
+     * Afficher la page des details du produit séléctionner
+     */
+    public function productDetails()
+    {
+        $product = new Produit();
+        $product->id=$_GET['id'];
+        $categorie=new Categorie();
+        $fabriquant=new Fabriquant();
+        $data=new UserData();
+
+        //  $fabriquant->select($product->id);
+        // $categorie=$product->selectCategory();
+        if ($product->select($_GET['id'])){
+            return $this->render('productDetails', [
+                'product' =>  $product->dataList,
+                'p' => $product,
+                'categorie' => $categorie,
+                'fabriquant' => $fabriquant,
+                'userData' =>$data
+            ]);
+        }
+    }
     
 }

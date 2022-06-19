@@ -1,3 +1,4 @@
+<?php use app\core\Application; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +39,8 @@
                         </li>
                         <li class="nav-item w-100">
                             <a href="/dashCommandes" class="nav-link px-0 align-middle link-secondary">
-                                <i class="fs-4 bi-basket3"></i> <span class="ms-1 d-none d-sm-inline">Commandes</span> </a>
+                                <i class="fs-4 bi-basket3"></i> 
+                                <span class="ms-1 d-none d-sm-inline">Commandes</span> </a>
                         </li>
                         <li class="nav-item w-100">
                             <a href="/dashAvis" class="nav-link px-0 align-middle link-secondary">
@@ -74,7 +76,10 @@
                             <li><a class="dropdown-item" href="#">Aide</a></li>
                             <hr>
                             <li>
-                                <a class="dropdown-item" href="/logout">Déconnexion</a>
+                                <a class="dropdown-item" href="/logout">
+                                Déconnexion
+                    </a>    
+                                
                             </li>
                         </ul>
                     </div>

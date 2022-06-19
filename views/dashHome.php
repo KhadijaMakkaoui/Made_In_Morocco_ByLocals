@@ -1,46 +1,42 @@
-<h1>Dashboard</h1>
+<!-- Sale & Revenue Start -->
 
-<div class="container table-responsive"> 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-     <tr>
-      <th scope="row">4</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3 mb-4">
+            <div class="fifth-color rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fs-4 bi-shop"></i>
+                <div class="ms-3">
+                    <p class="mb-2">PRODUITS</p>
+                    <h6 class="mb-0"><?php echo $Nbproduits ?></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-4">
+        <div class="fifth-color rounded d-flex align-items-center justify-content-between p-4">
+            <i class="fs-4 bi-basket3"></i> 
+                <div class="ms-3">
+                    <p class="mb-2">COMMANDES</p>
+                    <h6 class="mb-0"><?php echo $Nbcommandes ?></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-4">
+        <div class="fifth-color rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fs-4 bi-people"></i>
+                <div class="ms-3">
+                    <p class="mb-2">AVIS</p>
+                    <h6 class="mb-0"><?php echo $Nbavis ?></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-4">
+        <div class="fifth-color rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fs-4 bi-chat-left text-secondary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">MESSAGES</p>
+                    <h6 class="mb-0">23</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

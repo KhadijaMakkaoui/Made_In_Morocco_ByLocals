@@ -24,15 +24,7 @@ use app\core\form\Form;
                             </div>
                         </div>
                         <div class=" p-4 p-md-5 bg-white shadow">
-                            <!-- connect by API -->
-                            <!-- <div class="d-flex">
-                                <div class="w-100 ">
-                                    <p class="social-media d-flex justify-content-end">
-                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                                    </p>
-                                </div>
-                            </div> -->
+                           
                         <?php $form=Form::begin('',"post"); ?>
 
                             <div class="signin-form justify-content-center align-items-center">
@@ -43,17 +35,6 @@ use app\core\form\Form;
                                     </p>
 
                                 </div>
-                                <!-- Email input -->
-                                <!-- <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3"> Addresse email</label>
-                                    <input type="email" id="form3Example3" class="form-control" placeholder="Enter une addresse email valide " />
-                                </div> -->
-                                <!-- Password input -->
-                                <!-- <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4">Mot de passe</label>
-                                    <input type="password" id="form3Example4" class="form-control " placeholder="Enterer le mot de passe" />
-                                </div> -->
-                                
                                 <?php echo $form->field($model,'email') ?>
                                 <?php echo $form->field($model,'password')->passwordField() ?>
                                 <div class="form-group">
@@ -61,19 +42,18 @@ use app\core\form\Form;
                                 </div>
                                 
                                
-                                <div class="form-group d-md-flex">
+                                <!-- <div class="form-group d-md-flex">
                                     <div class="mt-3">
                                         <input type="checkbox">
                                         <label class="checkbox-wrap checkbox-primary mb-0">Se souvener de moi
-									  
 									 
 										</label>
-                                    </div>
+                                    </div> -->
                                 <?php  Form::end(); ?>
                                     <!-- <div class="w-50 text-md-right">
                                         <a href="#">Forgot Password</a>
                                     </div> -->
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>

@@ -35,10 +35,6 @@ class Client extends DbModel
     {
         return parent::selectAll();
     }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {
@@ -54,6 +50,15 @@ class Client extends DbModel
     {
         return parent::save();
     }
+    public function getLoggedClient(){
+        $tableName = $this->tableName();
+        $id_user=$_SESSION['user'];
+        $statement = self::prepareIt("SELECT * FROM $tableName where fk_account =$id_user ");
+        $statement->execute();
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        $_SESSION['client_id']=$result['id'];
+        return true;
+   }
     public function rules(): array
     {
         return [

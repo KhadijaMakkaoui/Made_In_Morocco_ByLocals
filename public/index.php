@@ -4,6 +4,7 @@ use app\core\Application;
 use app\controllers\AuthController;
 use app\controllers\AvisController;
 use app\controllers\CommandeController;
+use app\controllers\HomeController;
 use app\controllers\ProductController;
 use app\controllers\SiteController;
 use app\models\User;
@@ -26,7 +27,7 @@ $config=[
 $app=new Application(dirname(__DIR__),$config);
 
 $app->router->get('/',[SiteController::class, 'home']);
-// $app->router->get('/contact',[SiteController::class, 'contact']);
+
 $app->router->get('/contact/{id}',[SiteController::class, 'contact']);
 $app->router->post('/contact',[SiteController::class, 'handleContact']);
 
@@ -56,6 +57,12 @@ $app->router->post('/dashProducts',[ProductController::class, 'productsList']);
 
 $app->router->get('/addProduct',[ProductController::class, 'add']);
 $app->router->post('/addProduct',[ProductController::class, 'add']);
+
+$app->router->get('/updateProduct',[ProductController::class, 'update']);
+$app->router->post('/updateProduct',[ProductController::class, 'update']);
+
+$app->router->get('/deleteProduct',[ProductController::class, 'delete']);
+$app->router->post('/deleteProduct',[ProductController::class, 'delete']);
 //Search by categorie page
 $app->router->get('/productsByCat',[ProductController::class, 'productByCtegorie']);
 $app->router->post('/productsdByCat',[ProductController::class, 'productByCtegorie']);
@@ -85,6 +92,10 @@ $app->router->get('/deleteAvis',[AvisController::class, 'delete']);
 $app->router->post('/deleteAvis',[AvisController::class, 'delete']);
 
 $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
+
+//Dashboard home
+$app->router->get('/dashHome',[HomeController::class, 'dashHome']);
+$app->router->post('/dashHome',[HomeController::class, 'dashHome']);
 
 
 $app->run();

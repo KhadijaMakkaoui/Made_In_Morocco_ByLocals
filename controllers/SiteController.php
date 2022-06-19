@@ -13,6 +13,14 @@ class SiteController extends Controller{
         return $this->render('index',$params);
         // return Application::$app->router->renderView('home',$params);
     }
+    public function dashHome(){
+        $params=[
+            'name'=>"Khadija"
+        ];
+        $this->setLayout('dashboard');        
+        return $this->render('dashHome',$params);
+        // return Application::$app->router->renderView('home',$params);
+    }
     public function contact(){
         return $this->render('contact');
         // return Application::$app->router->renderView('contact');
@@ -33,11 +41,7 @@ class SiteController extends Controller{
 
         // return Application::$app->router->renderView('contact');
     }
-    public function dashHome(){
-        $this->setLayout('dashboard');        
-        return $this->render('dashHome');
-    }
-
+  
     // public function dashProducts(){
     //     $this->setLayout('dashboard');        
     //     return $this->render('dashProducts');

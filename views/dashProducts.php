@@ -50,15 +50,15 @@
                     <?php echo $produit['quantite']; ?>
                 </td>
                 <td>
-                    <?php echo $produit['prix']; ?>
+                    <?php echo $produit['prix']; ?> DH
                 </td>
                 <td>
                     <?php echo $libelle; ?>
                 </td>
                 
                 <td>
-                    <a class="link-secondary" href="./productUpdate?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
-                    <a class="link-secondary" href="./delete?id=<?php echo $produit['id']; ?>"><i class="bi bi-trash"></i></a>
+                    <a class="link-secondary" href="./updateProduct?id=<?php echo $produit['id']; ?>"><i class="bi bi-pencil-square"></i></a>
+                    <a class="link-secondary" href="./deleteProduct?id=<?php echo $produit['id']; ?>"><i class="bi bi-trash"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>
