@@ -26,7 +26,7 @@ $config=[
 $app=new Application(dirname(__DIR__),$config);
 
 $app->router->get('/',[SiteController::class, 'home']);
-// $app->router->get('/contact',[SiteController::class, 'contact']);
+
 $app->router->get('/contact/{id}',[SiteController::class, 'contact']);
 $app->router->post('/contact',[SiteController::class, 'handleContact']);
 
@@ -91,6 +91,10 @@ $app->router->get('/deleteAvis',[AvisController::class, 'delete']);
 $app->router->post('/deleteAvis',[AvisController::class, 'delete']);
 
 $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
+
+//Dashboard home
+$app->router->get('/dashHome',[SiteController::class, 'dashHome']);
+$app->router->post('/dashHome',[SiteController::class, 'dashHome']);
 
 
 $app->run();
