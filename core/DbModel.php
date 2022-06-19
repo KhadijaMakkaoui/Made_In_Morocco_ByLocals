@@ -114,5 +114,17 @@ abstract class DbModel extends Model {
         $statement->execute();
         return true;
     }
+    /**
+     * Permet de retourner le nombre des ligne de la table courante
+     */
+    public function count()
+    {
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT COUNT(*) FROM $tableName");
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result[0];
+    }
+
    
 }
