@@ -93,6 +93,9 @@ class Produit extends DbModel
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+    /**
+     * Permet de selectionner tous les colonnes d'une categorie d'un produit
+     */
     public function selectCategory()
     {  
         $tableName = $this->tableName();
@@ -102,6 +105,9 @@ class Produit extends DbModel
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+    /**
+     * Permet de selectionner les produits appartenant à une categorie donné
+     */
     public function selectProductsByCategory(int $id_categorie)
     {
         $tableName = $this->tableName();
@@ -109,8 +115,7 @@ class Produit extends DbModel
         INNER JOIN categories AS c ON sc.fk_categorie=c.id WHERE c.id=$id_categorie");
         $statement->execute();
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
-        // var_dump($result);
-        // exit;
+      
         return $result;
     }
     public function selectProductsBySCategory(int $id_s_categorie)
