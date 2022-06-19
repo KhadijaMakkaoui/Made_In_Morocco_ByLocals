@@ -15,6 +15,7 @@ use app\models\SousCategorie;
 
 class ProductController extends Controller
 {   
+    //=============DASHBOARD=====================
     /**
      * Affichage des produits
      */
@@ -45,51 +46,7 @@ class ProductController extends Controller
     /**
      * Afficher les produits d'une categorie
      */
-    public function productByCtegorie()
-    {
-        $product = new Produit();
-        $categ=new Categorie();
-       
-        if(isset($_GET['categorie'])){ 
-             $id_categorie=$_GET['categorie'];
-            if ($product->selectProductsByCategory($id_categorie) ){
-                $categ->select($id_categorie);
-                $distinct_s_cat=$product->selectDistinctSousCategory($id_categorie);
-                
-                $categorie=$categ->dataList;
-                return $this->render('productsByCat', [
-                    'produits' => $product,
-                    'categorie'=>  $categorie,
-                    'distinct_s_cat' => $distinct_s_cat
-
-                ]);
-            }
-        }
-        Application::$app->response->redirect('/boutique');
-    }
-    /**
-     * Afficher la page des details du produit séléctionner
-     */
-    public function productDetails()
-    {
-        $product = new Produit();
-        $product->id=$_GET['id'];
-        $categorie=new Categorie();
-        $fabriquant=new Fabriquant();
-        $data=new UserData();
-
-        //  $fabriquant->select($product->id);
-        // $categorie=$product->selectCategory();
-        if ($product->select($_GET['id'])){
-            return $this->render('productDetails', [
-                'product' =>  $product->dataList,
-                'p' => $product,
-                'categorie' => $categorie,
-                'fabriquant' => $fabriquant,
-                'userData' =>$data
-            ]);
-        }
-    }
+   
     /**
      * Ajouter un produit
      */
@@ -234,6 +191,54 @@ class ProductController extends Controller
                 Application::$app->session->setFlash('success', 'has successfully deleted');
                 Application::$app->response->redirect('dashProducts');
             }
+        }
+    } 
+    //=============CLIENT=====================
+    
+    public function productByCtegorie()
+    {
+        $product = new Produit();
+        $categ=new Categorie();
+        $image = new Image();
+        if(isset($_GET['categorie'])){ 
+             $id_categorie=$_GET['categorie'];
+            if ($product->selectProductsByCategory($id_categorie) ){
+                $categ->select($id_categorie);
+                $distinct_s_cat=$product->selectDistinctSousCategory($id_categorie);
+                
+                $categorie=$categ->dataList;
+                return $this->render('productsByCat', [
+                    'produits' => $product,
+                    'categorie'=>  $categorie,
+                    'distinct_s_cat' => $distinct_s_cat,
+                    'obj_image' => $image
+
+                ]);
+            }
+        }
+        Application::$app->response->redirect('/boutique');
+    }
+    /**
+     * Afficher la page des details du produit séléctionner
+     */
+    public function productDetails()
+    {
+        $product = new Produit();
+        $product->id=$_GET['id'];
+        $categorie=new Categorie();
+        $fabriquant=new Fabriquant();
+        $data=new UserData();
+
+        //  $fabriquant->select($product->id);
+        // $categorie=$product->selectCategory();
+        if ($product->select($_GET['id'])){
+            return $this->render('productDetails', [
+                'product' =>  $product->dataList,
+                'p' => $product,
+                'categorie' => $categorie,
+                'fabriquant' => $fabriquant,
+                'userData' =>$data
+            ]);
         }
     }
     
