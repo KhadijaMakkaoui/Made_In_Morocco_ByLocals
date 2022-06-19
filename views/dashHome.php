@@ -7,7 +7,7 @@
             <i class="fs-4 bi-shop"></i>
                 <div class="ms-3">
                     <p class="mb-2">PRODUITS</p>
-                    <h6 class="mb-0">23</h6>
+                    <h6 class="mb-0"><?php echo $Nbproduits ?></h6>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <i class="fs-4 bi-basket3"></i> 
                 <div class="ms-3">
                     <p class="mb-2">COMMANDES</p>
-                    <h6 class="mb-0">23</h6>
+                    <h6 class="mb-0"><?php echo $Nbcommandes ?></h6>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
         <i class="fs-4 bi-people"></i>
                 <div class="ms-3">
                     <p class="mb-2">AVIS</p>
-                    <h6 class="mb-0">23</h6>
+                    <h6 class="mb-0"><?php echo $Nbavis ?></h6>
                 </div>
             </div>
         </div>

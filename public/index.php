@@ -4,6 +4,7 @@ use app\core\Application;
 use app\controllers\AuthController;
 use app\controllers\AvisController;
 use app\controllers\CommandeController;
+use app\controllers\HomeController;
 use app\controllers\ProductController;
 use app\controllers\SiteController;
 use app\models\User;
@@ -93,8 +94,8 @@ $app->router->post('/deleteAvis',[AvisController::class, 'delete']);
 $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
 
 //Dashboard home
-$app->router->get('/dashHome',[SiteController::class, 'dashHome']);
-$app->router->post('/dashHome',[SiteController::class, 'dashHome']);
+$app->router->get('/dashHome',[HomeController::class, 'dashHome']);
+$app->router->post('/dashHome',[HomeController::class, 'dashHome']);
 
 
 $app->run();
