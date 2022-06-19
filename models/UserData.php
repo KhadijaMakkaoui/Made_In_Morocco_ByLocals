@@ -19,9 +19,9 @@ class UserData extends DbModel
         public int $fk_account;
 
 
-
-
-    public function tableName(): string
+    
+    
+        public function tableName(): string
     {
         return 'users_data';
     }
@@ -49,10 +49,6 @@ class UserData extends DbModel
     {
         return parent::selectAll();
     }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {

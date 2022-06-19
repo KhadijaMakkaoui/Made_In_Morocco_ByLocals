@@ -164,9 +164,12 @@ class ProductController extends Controller
         $s_categList=$s_categorie->dataList;
 
         if ($request->isGet()){
+            $_SESSION['id_prod']=$_GET['id'];
                 $id_prod=$request->getBody();
                 $product->select($id_prod['id']);
+
                 $data = $product->dataList;
+
                 $s_categorie->select($data['fk_s_categorie']);
                 $p_s_cat= $s_categorie->dataList;
                 $img=$product->selectImage();
@@ -179,49 +182,53 @@ class ProductController extends Controller
                 ]);
             // return $this->render('productAdd', $params);
         }
-        // if($request->isPost())
-        // {
-        //     $this->setLayout('dashboard');        
-        //     $id_product=$request->getBody();
-        //     $product->select($id_product['id']);
-        //     $data = $product->dataList;
-        //      $p_s_cat=$product->selectSousCategory();
-        //     $img=$product->selectImage();
-        //     $this->setLayout('dashboard');  
-        //     $params =[
-        //         'produit' => $data,
-        //         'image'   => $img,
-        //         's_categories'=>  $s_categ,
-        //         'p_s_cat' => $p_s_cat
-        //     ];  
-        //     if(isset($_POST['submit_img'])){
-        //         $img=$product->selectImage();
-        //         // var_dump($img);exit;
-        //         $image->loadData($request->getBody());
+        if($request->isPost())
+        {
+           //Get data
+            $product->select($_SESSION['id_prod']);
 
-        //         // var_dump($image);
-        //         // exit;
-        //         if ($image->update($img['id'])){
-        //             // Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
-        //             // $_SESSION['lastId']=$image->getLastInsetedId();
-        //              Application::$app->response->redirect('updateProduct');
-        //         }
-        //                     return $this->render('updateProduct', $params);
+            $data = $product->dataList;
+            
+            $s_categorie->select($data['fk_s_categorie']);
+            $p_s_cat= $s_categorie->dataList;
+            $img=$product->selectImage();
+            $this->setLayout('dashboard');        
+            
 
-        //     }
-        //     if(isset($_POST['submit_data'])){
-        //             $product->loadData($request->getBody());
-        //             if ($product->save() && $product->fk_image){
-        //                 Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
-        //                 Application::$app->response->redirect('dashProducts');
-        //             }
-        //     }
+            if(isset($_POST['submit_img'])){
+                
+                $img=$product->selectImage();
+                
+                $image->loadData($request->getBody());
+                
+                // var_dump((int)$img['id']);
+                // exit;
+                if ($image->update((int)$img['id'])){
+                    // Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
+                    // $_SESSION['lastId']=$image->getLastInsetedId();
+                    //  Application::$app->response->redirect('updateProduct');
+            //    $id=$_SESSION['id_prod'];
+                    return $this->render("updateProduct", [
+                        'produit' => $data,
+                        'image'   => $img,
+                        's_categories'=>  $s_categList,
+                        'p_s_cat' => $p_s_cat
+                    ]);
+                }
+            }
+            if(isset($_POST['submit_data'])){
+                    $product->loadData($request->getBody());
+                    if ($product->update($_SESSION['id_prod'])){
+                        Application::$app->session->setFlash('success', 'Modification effectuer avec succès');
+                        Application::$app->response->redirect('dashProducts');
+                    }
+            }
 
-        // }
-        // $this->setLayout('dashboard');        
-        // return $this->render('addProduct', [
-        //     'model' => $product
-        // ]); 
+        }
+        $this->setLayout('dashboard');        
+        return $this->render('addProduct', [
+            'model' => $product
+        ]); 
     }
 
 

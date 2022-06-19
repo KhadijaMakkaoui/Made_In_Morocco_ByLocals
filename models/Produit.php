@@ -13,7 +13,6 @@ class Produit extends DbModel
         public string $description= '';
         public int $quantite ;
         public float $prix ;
-        // public DateTime $createdAt_produit;
         public int $fk_s_categorie;
         public int $fk_image;
         public int $fk_fabriquant;
@@ -34,9 +33,6 @@ class Produit extends DbModel
             'fk_fabriquant'
             ];
     }
-    // public function getId() {
-    //     return 
-    // }
     public function save()
     {
         return parent::save();
@@ -56,14 +52,21 @@ class Produit extends DbModel
     {
         return parent::select($id);
     }
+    /**
+     * Permet de selectionner l'image d'un produit dont son fk_image=images.id
+     * @return array associative 
+     */
     public function selectImage()
     {
         $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT * FROM images INNER JOIN $tableName ON images.id=$tableName.fk_image");
+        $statement = self::prepareIt("SELECT images.* FROM images INNER JOIN $tableName ON images.id=$tableName.fk_image");
         $statement->execute();
-        $path= $statement->fetch(\PDO::FETCH_ASSOC);
-        return $path;
+        $image= $statement->fetch(\PDO::FETCH_ASSOC);
+        return $image;
     }
+    /**
+     * Permet de retourner tous les sous categorie où il ya des produits
+     */
     public function selectSousCategory()
     {
         $tableName = $this->tableName();
@@ -72,11 +75,16 @@ class Produit extends DbModel
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
-    public function selectDistinctSousCategory($whereCat)
+    /**
+     * Permet de selectionner distinct sous categorie d'une categorie donnée  ayant des produits 
+     * @param string|int $whereIdCat  id de la categorie
+     * @return array contient distinct sous categorie d'une categorie
+     */
+    public function selectDistinctSousCategory($whereIdCat)
     {
         $tableName = $this->tableName();
         $statement = self::prepareIt("SELECT DISTINCT $tableName.fk_s_categorie,sc.* FROM $tableName INNER JOIN sous_categories sc ON sc.id=$tableName.fk_s_categorie
-        WHERE sc.fk_categorie=$whereCat");
+        WHERE sc.fk_categorie=$whereIdCat");
         $statement->execute();
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
