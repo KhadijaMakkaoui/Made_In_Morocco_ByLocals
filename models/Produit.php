@@ -33,6 +33,10 @@ class Produit extends DbModel
             'fk_fabriquant'
             ];
     }
+    public function count()
+    {
+        return parent::count();
+    }
     public function save()
     {
         return parent::save();

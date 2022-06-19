@@ -59,6 +59,10 @@ class Commande extends DbModel
     {
         return parent::save();
     }
+    public function count()
+    {
+        return parent::count();
+    }
     public function rules(): array
     {
         return [

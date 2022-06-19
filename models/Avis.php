@@ -30,7 +30,10 @@ class Avis extends DbModel
     {
         return parent::update($id);
     }
-
+    public function count()
+    {
+        return parent::count();
+    }
     public function selectAll($attr=[])
     {
         return parent::selectAll();
