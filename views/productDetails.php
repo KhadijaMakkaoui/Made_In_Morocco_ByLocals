@@ -9,6 +9,8 @@ $data_fab=$fab_data->dataList;
 $fk_img=(int) $product['fk_image'];
 $obj_image->select($fk_img);
 $img=$obj_image->dataList;
+
+
 //img fabriquant
 $fk_img=(int) $data_fab['fk_image'];
 $obj_image->select($fk_img);
@@ -87,7 +89,6 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                                 $categorie->select($_GET['cat']);
                                 $c=$categorie->dataList;
                                 echo  $c['libelle'] 
-                                // var_dump($c)
                                 ?> </span>
 
                             </div>
@@ -297,110 +298,44 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
 </div>
 <!-- produits similaires -->
-<?php # $obj_product->selectProductsByCategory(2);?>
+<?php  $p_similaire=$obj_product->selectProductsByCategory($_GET['cat']);
+?>
 <div class="produit-pop">
     <h2 class="title m-5">produits similaires</h2>
     <div class="d-flex flex-row flex-nowrap overflow-auto justify-content-between gap-5">
+    <?php 
+    $i=0;
+    foreach ($p_similaire as $p):
+        $obj_image->select($p['fk_image']);
+        $img=$obj_image->dataList;?>  
+    
+        <?php if($i<7 && $p['id']!=$_GET['id']):?>    
+
         <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
+                <div class="card shadow" style="width: 18rem">
+                    <img clas="card-img-top" src="/files/<?php echo $img['chemin']?>" alt=" " />
+                    <div class="card-body text-center">
+                        <h5><?php echo $p['titre']?></h5>
+                        <p>
+                        <?php echo $p['description']?>                        </p>
+                        <p>
+                            Categorie: <?php echo $c['libelle']?> PRIX:
+                            <span class="price"><?php echo $p['prix']?> DH</span>
+                        </p>
+                        <a href="/panier?id=<?php echo $p['id']?>">
+                            <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
+                    Ajouter au panier
+                    </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="prod">
-            <div class="card shadow" style="width: 18rem">
-                <img clas="card-img-top" src="Assets/images/babouche-gravee-noire.jpg" alt=" " />
-                <div class="card-body text-center">
-                    <h5>Babouche noire femme</h5>
-                    <p>
-                        Babouche femme noire Babouche originale de cuire à 100% décorer en blanc
-                    </p>
-                    <p>
-                        Categorie: Vêtements et accessoires PRIX:
-                        <span class="price">DH200.00</span>
-                    </p>
-                    <a href="#">
-                        <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
-                Ajouter au panier
-                </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        <?php endif;?>    
+        <?php $i++?>    
+
+    <?php endforeach?>    
+
 </div>
 </div>

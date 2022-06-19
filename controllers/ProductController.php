@@ -225,7 +225,10 @@ class ProductController extends Controller
     public function productDetails()
     {
         $product = new Produit();
+        $obj_product = $product;
+
         $product->id=$_GET['id'];
+
         $categorie=new Categorie();
         $fabriquant=new Fabriquant();
         $fab_data=new UserData();
@@ -235,8 +238,7 @@ class ProductController extends Controller
       
         if ($product->select($_GET['id'])){
             $dataList=$product->dataList;
-
-          
+            
             return $this->render('productDetails', [
                 'product' => $dataList ,
                 'p' => $product,
@@ -245,7 +247,8 @@ class ProductController extends Controller
                 'fab_data' => $fab_data,
                 'userData' =>$data,
                 'obj_image' => $image,
-                'region' => $region
+                'region' => $region,
+                'obj_product' => $obj_product
             ]);
         }
     }
