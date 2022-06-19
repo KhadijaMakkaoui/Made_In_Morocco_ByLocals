@@ -197,13 +197,13 @@ class ProductController extends Controller
 
             if(isset($_POST['submit_img'])){
                 
-                $img=$product->selectImage();
+                // $img=$product->selectImage();
                 
                 $image->loadData($request->getBody());
                 
-                // var_dump((int)$img['id']);
+                // var_dump();
                 // exit;
-                if ($image->update((int)$img['id'])){
+                if ($image->update($data['fk_image'])){
                     // Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
                     // $_SESSION['lastId']=$image->getLastInsetedId();
                     //  Application::$app->response->redirect('updateProduct');
