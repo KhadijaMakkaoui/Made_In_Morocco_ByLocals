@@ -224,20 +224,23 @@ class ProductController extends Controller
     public function productDetails()
     {
         $product = new Produit();
+        // $similar_products=$product
         $product->id=$_GET['id'];
         $categorie=new Categorie();
         $fabriquant=new Fabriquant();
         $data=new UserData();
+        $image=new Image();
 
         //  $fabriquant->select($product->id);
         // $categorie=$product->selectCategory();
         if ($product->select($_GET['id'])){
             return $this->render('productDetails', [
                 'product' =>  $product->dataList,
-                'p' => $product,
+                // 'p' => $product,
                 'categorie' => $categorie,
                 'fabriquant' => $fabriquant,
-                'userData' =>$data
+                'userData' =>$data,
+                'obj_image' => $image
             ]);
         }
     }

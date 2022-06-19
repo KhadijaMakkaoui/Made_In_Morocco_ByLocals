@@ -3,10 +3,11 @@ $fab=  $fabriquant->select($product['fk_fabriquant']);
 $fab=  $fabriquant->dataList;
 $userData->select($fab['id']);
 $data=$userData->dataList;
-// var_dump($data)
-?>;
-
- ?>
+$fk_img=(int) $product['fk_image'];
+$obj_image->select($fk_img);
+$img=$obj_image->dataList;
+// var_dump();
+?>
 <div class="row product-Page">
     <!--product details-->
     <div class="my-5">
@@ -15,7 +16,7 @@ $data=$userData->dataList;
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
                         <div class="main_image">
-                            <img src="/Assets/images/pouf.jpg" id="main_product_image" class="w-100" />
+                            <img src="/files/<?php echo $img['chemin']?>" id="main_product_image" class="w-100" alt="<?php echo $img['chemin']?>" />
                         </div>
                     </div>
                 </div>
