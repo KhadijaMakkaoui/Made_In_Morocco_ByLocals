@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\core\Request;
 use app\core\Response;
 // use app\models\User;
+use app\models\Client;
 use app\models\Account;
 use app\core\Controller;
 use app\core\Application;
@@ -16,12 +17,17 @@ class AuthController extends Controller{
     public function login(Request $request,Response $response){
         $loginForm = new LoginForm();
         $fabriqant=new Fabriquant();
+        $client = new Client();
 
         if($request->isPost()){
             $loginForm->loadData($request->getBody());
             if($loginForm->validate() && $loginForm->login()){
-                $fabriqant->getLoggedFabriquant();
-                $response->redirect('/boutique');
+                if($fabriqant->getLoggedFabriquant()){
+                    $response->redirect('/dashHome');
+                }else if($client->getLoggedClient()){
+                    $response->redirect('/boutique');
+                }
+                
                 return;
             }
         }
