@@ -40,7 +40,8 @@ class Region extends DbModel
     }
     public function GetRegionByVille($id_ville){
         $tableName = $this->tableName();
-        $statement = self::prepareIt("SELECT * FROM $tableName where id = $id_ville");
+        $statement = self::prepareIt("SELECT  $tableName.* FROM $tableName
+        INNER JOIN villes ON $tableName.id=villes.fk_region where villes.id = $id_ville");
         $statement->execute();
         $result = $statement->fetch(\PDO::FETCH_ASSOC);
         return $result;
