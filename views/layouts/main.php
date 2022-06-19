@@ -59,8 +59,8 @@
                     <?php else: ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName(); ?>
-                    (Logout)
+                            <a class="nav-link" href="/logout">
+                    Logout
                     </a>
                         </li>
                     </ul><?php endif; ?>

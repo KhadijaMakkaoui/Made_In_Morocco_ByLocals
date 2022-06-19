@@ -1,3 +1,4 @@
+<?php use app\core\Application; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +76,10 @@
                             <li><a class="dropdown-item" href="#">Aide</a></li>
                             <hr>
                             <li>
-                                <a class="dropdown-item" href="/logout">Déconnexion</a>
+                                <a class="dropdown-item" href="/logout">
+                                Déconnexion
+                    </a>    
+                                
                             </li>
                         </ul>
                     </div>
