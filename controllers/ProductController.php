@@ -196,18 +196,10 @@ class ProductController extends Controller
             
 
             if(isset($_POST['submit_img'])){
-                
-                // $img=$product->selectImage();
-                
+   
                 $image->loadData($request->getBody());
-                
-                // var_dump();
-                // exit;
                 if ($image->update($data['fk_image'])){
-                    // Application::$app->session->setFlash('success', 'Ajout effectuer avec succès');
-                    // $_SESSION['lastId']=$image->getLastInsetedId();
-                    //  Application::$app->response->redirect('updateProduct');
-            //    $id=$_SESSION['id_prod'];
+                  
                     return $this->render("updateProduct", [
                         'produit' => $data,
                         'image'   => $img,
@@ -217,11 +209,11 @@ class ProductController extends Controller
                 }
             }
             if(isset($_POST['submit_data'])){
-                    $product->loadData($request->getBody());
-                    if ($product->update($_SESSION['id_prod'])){
-                        Application::$app->session->setFlash('success', 'Modification effectuer avec succès');
-                        Application::$app->response->redirect('dashProducts');
-                    }
+                $product->loadData($request->getBody());
+
+                if ($product->update($_SESSION['id_prod'])){
+                    Application::$app->response->redirect('dashProducts');
+                }
             }
 
         }
@@ -232,16 +224,17 @@ class ProductController extends Controller
     }
 
 
-    // public function deleteTeacher(Request $request)
-    // {
-    //     $product = new TeacherModel();
-    //     if ($request->isGet()){  
-    //         $product->loadData($request->getBody());
-    //         if ($product->delete($product->id)){ //to integrate validate method
-    //             Application::$app->session->sefFlash('success', 'has successfully deleted');
-    //             Application::$app->response->redirect('product');
-    //         }
-    //     }
-    // }
+    public function delete(Request $request)
+    {
+        $p = new Produit();
+        if ($request->isGet()){  
+            $p->loadData($request->getBody());
+            
+            if ($p->delete($p->id)){ //to integrate validate method
+                Application::$app->session->setFlash('success', 'has successfully deleted');
+                Application::$app->response->redirect('dashProducts');
+            }
+        }
+    }
     
 }

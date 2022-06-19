@@ -39,7 +39,7 @@
     <!-- Text input -->
     <div class="form-outline mb-4">
             <label class="form-label" for="form6Example3">Prix</label>
-            <input type="number" value="<?php echo $produit['prix'] ?>" name="prix" id="form6Example3" class="form-control" placeholder="Prix du produit" min="0" />
+            <input type="number" value="<?php echo $produit['prix'] ?>" name="prix" id="form6Example3" step="any" class="form-control" placeholder="Prix du produit" min="0" />
         </div>
     <!-- select Sous categories -->
     <div class="mb-4">
@@ -66,8 +66,8 @@
             <?php echo $produit['description'] ?>
             </textarea>
         </div>
-        <input type="text" name="fk_image" value="<?php echo $produit['fk_image']?>">
-        <input type="text" name="fk_fabriquant" value="<?php if(isset($_SESSION['fabriquant_id'])) echo $_SESSION['fabriquant_id']?>">
+        <input type="hidden" name="fk_image" value="<?php echo $produit['fk_image']?>">
+        <input type="hidden" name="fk_fabriquant" value="<?php if(isset($_SESSION['fabriquant_id'])) echo $_SESSION['fabriquant_id']?>">
     <!-- Submit button -->
     <button type="submit" name="submit_data" class="btn btn-outline-dark w-100 mb-4">
            Modifier
