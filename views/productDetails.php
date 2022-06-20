@@ -37,7 +37,9 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="title"><?php echo  $product['titre'] ?></h3>
                         </div>
+                        
                         <div class="price"><?php echo  $product['prix'] ?> DH</div>
+                        <!-- etoiles -->
                         <a href="#commentaires" class="text-decoration-none link-dark">
                             <div class="rate">
                                 <span class="me-4">
@@ -65,14 +67,14 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                             </div>
 
                             <!-- btn panier -->
-                            <a href="/panier?id= <?php echo  $product['id'] ?>" class="btn btn-outline-dark title col-lg-7">
+                            <a href="/panier?id= <?php echo  $product['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="btn btn-outline-dark title col-lg-7">
                                 ajouter au panier
                             </a>
 
                         </div>
 
                         <div class="">
-                            <a href="/wishList?id= <?php echo  $product['id'] ?>" class="btn btn-outline-dark w-100 title">
+                            <a href="/wishList?id= <?php echo  $product['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="btn btn-outline-dark w-100 title">
                                 <i class="bi bi-heart"></i>
                                 Ajouter à la liste des souhaits
                             </a>
@@ -81,7 +83,7 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
                             <div class="">
                                 <span class="fw-bold">En stock : </span>
-                                <span class="text-secondary"> <?php echo  $product['quantite'] ?> </span>
+                                <span class="text-secondary" id="quantite_produit"> <?php echo  $product['quantite'] ?> </span>
                             </div>
                             <div class="">
                                 <span class="fw-bold">Categorie : </span>
@@ -312,8 +314,7 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
         <?php if($i<7 && $p['id']!=$_GET['id']):?>    
 
         <div class="prod">
-                <div class="card shadow" style="width: 18rem">
-                <a></a>
+                <a href="/productDetails?id=<?php echo $p['id']?>&cat=<?php echo  $_GET['cat']?>" class="card shadow link-dark text-decoration-none" style="width: 18rem">
                     <img clas="card-img-top" src="/files/<?php echo $img['chemin']?>" alt=" " />
                     <div class="card-body text-center">
                         <h5><?php echo $p['titre']?></h5>
@@ -323,13 +324,13 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                             Categorie: <?php echo $c['libelle']?> PRIX:
                             <span class="price"><?php echo $p['prix']?> DH</span>
                         </p>
-                        <a href="/panier?id=<?php echo $p['id']?>">
+                        <a href="/panier?id=<?php echo $p['id']?>&cat=<?php echo  $_GET['cat'] ?>">
                             <button class="btn btn-outline-dark p-3 my-2 rounded-2 border-1">
                     Ajouter au panier
                     </button>
                         </a>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     

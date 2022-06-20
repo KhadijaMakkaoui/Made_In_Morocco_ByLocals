@@ -32,8 +32,6 @@ class HomeController extends Controller
      }
     public function boutique()
     {
-        //TODO: Send categorie of every product
-        
         $product =new Produit();
         $obj_product = $product;
         $categorie=new Categorie();
@@ -48,6 +46,7 @@ class HomeController extends Controller
         }
 
      }
+
 
 
   

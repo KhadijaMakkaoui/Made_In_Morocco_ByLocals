@@ -43,7 +43,7 @@
                                             <h5> <?php echo  $value['titre'] ?></h5>
                                             <p class="price"> <?php echo $value['prix'] ?><span>DH</span></p>
                                             </p>
-                                            <a href="/panier?id= <?php echo $value['id'] ?>">
+                                            <a href="/panier?id= <?php echo $value['id'] ?>&cat=<?php echo  $_GET['cat'] ?>">
                                                 <button class="btn btn-outline-dark rounded-2  border-1">Ajouter au
                                                     panier</button>
                                             </a>
