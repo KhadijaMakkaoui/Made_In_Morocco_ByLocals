@@ -37,8 +37,6 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="title"><?php echo  $product['titre'] ?></h3>
                         </div>
-                        <span class="d-none" id="quantite_produit"><?php echo  $product['quantite'] ?></span>
-
                         <div class="price"><?php echo  $product['prix'] ?> DH</div>
                         <a href="#commentaires" class="text-decoration-none link-dark">
                             <div class="rate">
@@ -79,8 +77,6 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                                 Ajouter à la liste des souhaits
                             </a>
                         </div>
-
-
                         <div class="short-desc mt-4">
 
                             <div class="">
@@ -316,11 +312,9 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
         <?php if($i<7 && $p['id']!=$_GET['id']):?>    
 
         <div class="prod">
-        <a href="/productDetails?id=<?php echo  $p['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="link-dark text-decoration-none">
-
                 <div class="card shadow" style="width: 18rem">
-                <img class="card-img-top" src="/files/<?php echo $img['chemin'] ?>" alt="<?php echo $img['chemin'] ?>" class="" width="70px" />
-
+                <a></a>
+                    <img clas="card-img-top" src="/files/<?php echo $img['chemin']?>" alt=" " />
                     <div class="card-body text-center">
                         <h5><?php echo $p['titre']?></h5>
                         <p>
@@ -337,7 +331,6 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                     </div>
                 </div>
             </div>
-        </a>
         </div>
     
         <?php endif;?>    
@@ -347,4 +340,4 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
 </div>
 </div>
-<script src="/Assets/js/produitDetails.js"
+<script src="/Assets/js/produitDetails.js"></script>
