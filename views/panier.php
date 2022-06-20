@@ -15,6 +15,7 @@
             <div class="vos-selct col-lg-8">
                 <h3 class="fw-light">VOS SELECTIONS</h3>
                 <hr>
+               
                  <?php foreach($panier as $p): 
                             $obj_product->select($p['fk_produit']);
                             $product=$obj_product->dataList;
@@ -23,6 +24,7 @@
                            ?>
                 <!-- article -->
                 <div class="article row mb-4">
+                
                     <!-- image -->
                     <div class="col-sm-12 col-md-4 mt-3" style=" width: 18rem; ">
                         <img class="img-fluid rounded" src="/files/<?php echo $img['chemin']?>" alt="">
@@ -62,7 +64,7 @@
                 <hr class="m-1">
                 <div class="d-flex flex-row justify-content-between">
                     <div class=" ">Total</div>
-                    <div class=""><?php echo $total ?> DH</span>
+                    <div class=""><?php echo $total??0 ?> DH</span>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between ">
@@ -72,8 +74,7 @@
                 <div class="d-flex flex-row justify-content-between ">
                     <div class=" ">Total séstimé</div>
                     <div class="fw-bold fs-4 ">
-                        <?php echo $total ?> <span>DH</span>
-                        <input type="hidden" name="" value="<?php echo $total ?> ">
+                        <?php echo $total??0 ?> <span>DH</span>
                     </div>
                 </div>
                 <!-- Details -->
@@ -85,9 +86,9 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-outline-dark ">COMMANDER</button>
+                    <button type="submit" class="btn btn-outline-dark ">COMMANDER</button>
                 </div>
-            </div>
+                 </form>
         </div>
     </main>
 <script src="/Assets/js/produitDetails.js"></script>
