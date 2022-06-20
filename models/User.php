@@ -1,16 +1,21 @@
 <?php
+
 namespace app\models;
 
-use app\core\Model;
+use app\models\Role;
 use app\core\DbModel;
 use app\core\UserModel;
 
-class User extends UserModel {
+
+class User extends UserModel
+{
 
     //Have to be this class attributeName= register view name=""
+
     public string $email='';
     public string $password='';
     public string $confirmPassword='';
+    public string $fk_role='';
 
     public function tableName():string{
         return 'accounts';
@@ -19,18 +24,34 @@ class User extends UserModel {
     //     return 'id';
     // }
     public function attributes():array{
-        return ['email', 'password'];
+        return ['email', 'password','fk_role'];
     }
     public function labels():array{
         return [
             'email'  => 'Email',
-            'password' => 'Password',
-            'confirmPassword'  => 'Confirm Password'];
+            'password' => 'Mot de passe',
+            'confirmPassword'  => 'Confirmation du mot de passe'];
+    }
+    public function setRole(){
+        $role=new Role();
+        // $role->selectAll();
+        // $role=$role->dataList;
+
+        // if($_SERVER['REQUEST_URI']=="/register"){
+        //     $role =$role->findOneN(['role' => 'client'],'roles');
+        //     echo $role->id;
+        //     exit;
+        // }
     }
 
-
     public function save(){
-        $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+        $this->password = password_hash($this->password,PASSWORD_DEFAULT);        
+        
+        if($_SERVER['REQUEST_URI']=="/register"){
+            $this->fk_role =3;  
+        }else if($_SERVER['REQUEST_URI']=="/registerVendeur"){
+            $this->fk_role =2;  
+        }      
         return parent::save();
     }
 
@@ -42,6 +63,7 @@ class User extends UserModel {
         ];
     }
     public function getDisplayName():string { 
-        return 'Nom ';
+        // return $this->firstname.' '.$this->lastname;
+        return 'name';
     }
 }
