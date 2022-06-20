@@ -33,7 +33,7 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-3">
+                    <form method="post" class="p-3" action="">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="title"><?php echo  $product['titre'] ?></h3>
                         </div>
@@ -59,17 +59,23 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                         <div class="row my-5 gap-1">
                             <!-- Quantité -->
                             <div class="counter d-inline-flex col-lg-4 justify-content-center">
-                                <button class="down btns btn btn-dark" onClick="decreaseCount(event, this)"> 
+                                <a class="down btns btn btn-dark" onClick="decreaseCount(event, this)"> 
                                         -                   
-                                        </button>
-                                <span class="px-2 bg">1</span>
-                                <button class="up btns btn btn-dark" onClick="increaseCount(event, this)">                      +                    </button>
+                                        </a>
+                                <span class="px-2 bg" >1</span>
+                                <a class="up btns btn btn-dark" onClick="increaseCount(event, this)">                     
+                                      +                    
+                                    </a>
+                                    <input type="hidden" id="hide_quantite" name="quantite" value="1"/>
                             </div>
-
+                            <input type="hidden" id="" name="fk_produit" value="<?php echo $_GET['id'] ?>"/>
+                            <input type="text" id="" name="fk_client" value="<?php echo $_SESSION['client_id'] ?>"/>
+ 
                             <!-- btn panier -->
-                            <a href="/panier?id= <?php echo  $product['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="btn btn-outline-dark title col-lg-7">
+                            <!-- <a href="/panier?id=<?php echo  $product['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="btn btn-outline-dark title col-lg-7">
                                 ajouter au panier
-                            </a>
+                            </a> -->
+                            <input type="submit" value="ajouter au panier" class="btn btn-outline-dark title col-lg-7" />
 
                         </div>
 
@@ -96,7 +102,7 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                             </div>
                         </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
