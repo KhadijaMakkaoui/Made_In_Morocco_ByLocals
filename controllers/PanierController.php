@@ -127,8 +127,7 @@ class PanierController extends Controller
         if ($request->isGet()){  
             $panier->loadData($request->getBody());
             if ($panier->delete($panier->id)){ //to integrate validate method
-                Application::$app->session->setFlash('success', 'has successfully deleted');
-                Application::$app->response->redirect('dashCommandes');
+                Application::$app->response->redirect('panier');
             }
         }
     }

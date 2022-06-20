@@ -49,7 +49,7 @@
                                 <?php echo $total=(int)$p['quantite']*(float)$product['prix'] ?> DH 
                                 <?php $total+= (int)$p['quantite']*(float)$product['prix'] ?>
                             </div>
-                            <a href="/delete?id=<?php echo $product['id'] ?>" class="card-link me-2">Supprimer </a>
+                            <a href="/delete?id=<?php echo $p['id'] ?>" class="card-link me-2">Supprimer </a>
                             <!-- <a href="/productDetails?id=<?php #echo $product['id']?>" class="card-link">Modifier</a> -->
                         </div>
                     </div>

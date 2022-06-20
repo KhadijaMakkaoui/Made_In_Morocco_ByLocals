@@ -100,6 +100,9 @@ $app->router->post('/boutique',[HomeController::class, 'boutique']);
 //Panier page
 $app->router->get('/panier',[PanierController::class, 'panier']);
 $app->router->post('/panier',[PanierController::class, 'panier']);
+//Panier delete
+$app->router->get('/delete',[PanierController::class, 'delete']);
+$app->router->post('/delete',[PanierController::class, 'delete']);
 
 
 $app->run();
