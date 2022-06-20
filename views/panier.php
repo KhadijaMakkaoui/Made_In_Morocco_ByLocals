@@ -36,29 +36,33 @@
                                 <?php echo $product['description'] ?>
                                 </p>
                                 <div class="qte">
-                                <!-- <span class="text-secondary" id="quantite_produit">  </span> -->
                                     <span>Quantité </span>
                                     <!-- quantite commander -->
-                                    <input type="number" min="1" max="<?php echo  $product['quantite'] ?>" value="<?php echo  $p['quantite'] ?>"/>
+                                    <input type="number" readonly="true" min="1" max="<?php echo  $product['quantite'] ?>" id="quantite_panier" value="<?php echo  $p['quantite'] ?>"/>
                                 </div>
                                 <div>Prix
                                     <span class="price"><?php echo $product['prix'] ?> DH</span>
                                 </div>
                             </div>
+                            <div>
+                                <span>Subtotal : </span>
+                                <?php echo $total=(int)$p['quantite']*(float)$product['prix'] ?> DH 
+                                <?php $total+= (int)$p['quantite']*(float)$product['prix'] ?>
+                            </div>
                             <a href="/delete?id=<?php echo $product['id'] ?>" class="card-link me-2">Supprimer </a>
-                            <a href="/productDetails?id=<?php echo $product['id']?>&cat=<?php echo  $_GET['cat'] ?>" class="card-link">Modifier</a>
+                            <!-- <a href="/productDetails?id=<?php #echo $product['id']?>" class="card-link">Modifier</a> -->
                         </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             <!-- Recap de la commande -->
-            <div class=" text-break fourth-color shadow fw-light p-3 col-lg-4 " style=" height: 20rem; ">
+            <form method="post" class=" text-break fourth-color shadow fw-light p-3 col-lg-4 " style=" height: 20rem; ">
                 <h5 class="title ">récapitulatif de la commande</h5>
                 <hr class="m-1">
                 <div class="d-flex flex-row justify-content-between">
                     <div class=" ">Total</div>
-                    <div class="">100 DH</span>
+                    <div class=""><?php echo $total ?> DH</span>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between ">
@@ -67,7 +71,10 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between ">
                     <div class=" ">Total séstimé</div>
-                    <div class="fw-bold fs-4 ">100 <span>DH</span></div>
+                    <div class="fw-bold fs-4 ">
+                        <?php echo $total ?> <span>DH</span>
+                        <input type="hidden" name="" value="<?php echo $total ?> ">
+                    </div>
                 </div>
                 <!-- Details -->
                 <div class=" ">
