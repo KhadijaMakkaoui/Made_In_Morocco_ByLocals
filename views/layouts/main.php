@@ -47,23 +47,22 @@
 
                        
                     </ul>
-                    <?php if(Application::isGuest()): ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/login">Se connecter</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">S'inscrire</a>
-                        </li>
-                    </ul>
+                    <?php if(!Application::isGuest()): ?>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Se connecter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">S'inscrire</a>
+                            </li>
+                        </ul>
                     <?php else: ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">
-                    Logout
-                    </a>
-                        </li>
-                    </ul><?php endif; ?>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
                     <ul class="navbar-nav">
                         <li class="nav-item ">
                             <a class="nav-link" href="/panier"><i class="bi bi-bag"></i></a>

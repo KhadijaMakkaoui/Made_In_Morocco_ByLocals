@@ -1,5 +1,8 @@
 
-
+<?php use app\core\Application;
+if(Application::isGuest()): ?>
+    <?php header("Location: /login") ?>
+                    <?php endif ?>
 <div class="container d-flex justify-content-between">
     <h1 class="mb-4 ">Produits</h1>
     <a href="/addProduct" class="btn btn-outline-dark  h-50">

@@ -313,6 +313,7 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
         <div class="prod">
                 <div class="card shadow" style="width: 18rem">
+                <a></a>
                     <img clas="card-img-top" src="/files/<?php echo $img['chemin']?>" alt=" " />
                     <div class="card-body text-center">
                         <h5><?php echo $p['titre']?></h5>
@@ -339,3 +340,4 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
 </div>
 </div>
+<script src="/Assets/js/produitDetails.js"></script>
