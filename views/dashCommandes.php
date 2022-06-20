@@ -1,3 +1,7 @@
+<?php use app\core\Application;
+if(Application::isGuest()): ?>
+    <?php header("Location: /login") ?>
+                    <?php endif ?>
 <div class="container">
   <div class="d-flex justify-content-between">
       <h1 class="mb-4 ">Commandes</h1>

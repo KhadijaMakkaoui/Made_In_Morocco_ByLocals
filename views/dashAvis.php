@@ -1,4 +1,7 @@
-
+<?php use app\core\Application;
+if(Application::isGuest()): ?>
+    <?php header("Location: /login") ?>
+  <?php endif ?>
 <div class="container table-responsive"> 
 <caption>
   <h1 class="mb-4">Avis</h1> </caption>

@@ -1,5 +1,8 @@
 <!-- Sale & Revenue Start -->
-
+<?php use app\core\Application;
+if(Application::isGuest()): ?>
+    <?php header("Location: /login") ?>
+                    <?php endif ?>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3 mb-4">
