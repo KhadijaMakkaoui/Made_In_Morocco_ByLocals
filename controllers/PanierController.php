@@ -13,20 +13,36 @@ use app\core\Application;
 
 class PanierController extends Controller
 {
-    public function panier()
-     {
-         $panier = new Panier();
-         $product=new Produit();
+    public function panier(Request $request)
+     {  
+        $panier = new Panier();
+        $product=new Produit();
         $image=new Image();
-         if ($panier->selectAll()){
-             $data = $panier->dataList;
-            //  var_dump($data);exit;
-             return $this->render('panier', [
-                 'panier' => $data,
-                 'obj_product' => $product,
-                 'obj_image' => $image
-             ]);
-         }
+        if ($request->isGet()){
+            if ($panier->selectAll() ){
+                $data = $panier->dataList;
+               //  var_dump($data);exit;
+                return $this->render('panier', [
+                    'panier' => $data,
+                    'obj_product' => $product,
+                    'obj_image' => $image
+                ]);
+            }       
+        }
+        // if($request->isPost())
+        // {
+        //     echo "post";exit;
+        //     $panier->loadData($request->getBody());
+
+        //     if ($panier->save()){
+        //         Application::$app->response->redirect('dashCommandes');
+        //     }
+        //     $this->setLayout('dashboard');        
+        //     return $this->render('addCommande', [
+        //         'model' => $panier
+        //     ]);
+        // }
+        
       }
 
     // public function add(Request $request){
@@ -105,16 +121,16 @@ class PanierController extends Controller
     //     ]);    
     // }
 
-    // public function delete(Request $request)
-    // {
-    //     $panier = new panier();
-    //     if ($request->isGet()){  
-    //         $panier->loadData($request->getBody());
-    //         if ($panier->delete($panier->id)){ //to integrate validate method
-    //             Application::$app->session->setFlash('success', 'has successfully deleted');
-    //             Application::$app->response->redirect('dashCommandes');
-    //         }
-    //     }
-    // }
+    public function delete(Request $request)
+    {
+        $panier = new panier();
+        if ($request->isGet()){  
+            $panier->loadData($request->getBody());
+            if ($panier->delete($panier->id)){ //to integrate validate method
+                Application::$app->session->setFlash('success', 'has successfully deleted');
+                Application::$app->response->redirect('dashCommandes');
+            }
+        }
+    }
     
 }

@@ -257,15 +257,30 @@ class ProductController extends Controller
         }
         if($request->isPost())
         {
+            $panier->selectAll();
+            $data=$panier->dataList;
             $panier->loadData($request->getBody());
-            if ($panier->save()){
-                Application::$app->session->setFlash('success', 'Produit ajouter avec succès dans votre panier');
-                // $id_inserted=$image->getLastInsetedId();
-                // $isImageUploaded=true;
-                return $this->render("/panier");
-
+            //$exist_product=$product->select($panier->fk_produit);
+            // var_dump($exist_product);
+            // if(!$exist_product){
+                if ($panier->save()){
+                    Application::$app->session->setFlash('success', 'Produit ajouter avec succès dans votre panier');
+                    // $id_inserted=$image->getLastInsetedId();
+                    // $isImageUploaded=true;
+                    return $this->render("index");
+    
+                }
+            // }
+            // else{
+            //     echo "exist";
+                // if ($panier->update()){
+                //     Application::$app->session->setFlash('success', 'Produit ajouter avec succès dans votre panier');
+                //     // $id_inserted=$image->getLastInsetedId();
+                //     // $isImageUploaded=true;
+                //     return $this->render("/panier");
+    
+                // }
             }
         }
     }
     
-}
