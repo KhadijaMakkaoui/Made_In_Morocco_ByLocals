@@ -47,7 +47,7 @@
 
                        
                     </ul>
-                    <?php if(!Application::isGuest()): ?>
+                    <?php if(Application::isGuest()): ?>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
                                 <a class="nav-link" href="/login">Se connecter</a>
