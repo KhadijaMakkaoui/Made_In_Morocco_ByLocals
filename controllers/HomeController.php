@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use app\models\Avis;
 use app\core\Request;
+use app\models\Image;
 use app\models\Client;
 use app\models\Produit;
 use app\core\Controller;
 use app\models\Commande;
 use app\core\Application;
+use app\models\Categorie;
 
 class HomeController extends Controller
 {
@@ -27,6 +29,24 @@ class HomeController extends Controller
                 'Nbavis' => $avis->count()
             ]);
         }
+     }
+    public function boutique()
+    {
+        //TODO: Send categorie of every product
+        
+        $product =new Produit();
+        $obj_product = $product;
+        $categorie=new Categorie();
+        $image =new Image(); 
+        if($product->selectAll()){
+            return $this->render('boutique', [
+                'products' => $product->dataList,
+                'obj_image' => $image,
+                'obj_categorie' => $categorie,
+                'obj_product' => $obj_product
+            ]);
+        }
+
      }
 
 

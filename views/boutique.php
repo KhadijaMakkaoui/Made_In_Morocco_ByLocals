@@ -101,7 +101,40 @@
         <!-- nos selections -->
         <div class="m-5 selections">
             <h1 class="title my-5">NOS séléction</h1>
-            <div class="">
+          
+            <?php
+                            
+                foreach ($products as $value):
+                $fk_img=(int) $value['fk_image'];
+                $obj_image->select($fk_img);
+                $cat=$obj_product->getCategoryById( $value['fk_s_categorie']);
+                ?>  
+                
+                    <a href="/productDetails?id=<?php echo  $value['id'] ?>&cat=<?php echo $cat['id']; ?>" class="link-dark text-decoration-none">
+                        <div class="card first-color border-white shadow" style="width: 20rem;">
+                        <img class="card-img-top" src="/files/<?php echo $obj_image->dataList['chemin'] ?>" alt="<?php echo $obj_image->dataList['chemin'] ?>" class="" width="70px" />
+
+                        <!-- <img class="card-img-top" src="/Assets/images/pouf.jpg" alt=" "> -->
+                            <div class="card-body text-center bg-white">
+                                <h5> <?php echo  $value['titre'] ?></h5>
+                                <p class="description"> <?php echo $value['description'] ?></p>
+                                <p class="price"> <?php echo $value['prix'] ?><span>DH</span></p>
+                                </p>
+                                <a href="/panier?id= <?php echo $value['id'] ?>">
+                                    <button class="btn btn-outline-dark rounded-2  border-1">Ajouter au
+                                        panier</button>
+                                </a>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <?php endforeach;?>
+            </div>
+                        
+        </div>
+ 
+            <!-- <div class="">
                 <div class="selction ">
                     <div class="mb-3">
                         <span class="col title">Notre séléction des <span>pouffs</span></span>
@@ -334,7 +367,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
   

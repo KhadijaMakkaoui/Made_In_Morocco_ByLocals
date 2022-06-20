@@ -96,6 +96,9 @@ $app->router->get('/dashProfile',[SiteController::class, 'dashProfile']);
 //Dashboard home
 $app->router->get('/dashHome',[HomeController::class, 'dashHome']);
 $app->router->post('/dashHome',[HomeController::class, 'dashHome']);
+//Boutique page
+$app->router->get('/boutique',[HomeController::class, 'boutique']);
+$app->router->post('/boutique',[HomeController::class, 'boutique']);
 
 
 $app->run();

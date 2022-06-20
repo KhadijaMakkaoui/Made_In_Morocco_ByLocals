@@ -32,8 +32,7 @@
                             //     echo '<pre>';
                             // var_dump($value);echo '<pre />';
                             $fk_img=(int) $value['fk_image'];
-                            $obj_image->select($fk_img);
-                            ?>  
+                            $obj_image->select($fk_img);?>  
                             
                                 <a href="/productDetails?id=<?php echo  $value['id'] ?>&cat=<?php echo  $_GET['categorie'] ?>" class="link-dark text-decoration-none">
                                     <div class="card first-color border-white shadow" style="width: 20rem;">

@@ -105,6 +105,15 @@ class Produit extends DbModel
         $result= $statement->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
     }
+    public function getCategoryById($id_cat)
+    {  
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT categories.* FROM categories INNER JOIN sous_categories ON categories.id=sous_categories.fk_categorie
+         INNER JOIN $tableName ON sous_categories.id=$tableName.fk_s_categorie WHERE $tableName.fk_s_categorie=$id_cat");
+        $statement->execute();
+        $result= $statement->fetch(\PDO::FETCH_ASSOC);
+        return $result;
+    }
     /**
      * Permet de selectionner les produits appartenant à une categorie donné
      */
