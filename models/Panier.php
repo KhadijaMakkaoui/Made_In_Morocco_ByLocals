@@ -53,6 +53,13 @@ class Panier extends DbModel
     {
         return parent::save();
     }
+    public function panierOfClient($id_client){
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM $tableName where fk_client = $id_client");
+        $statement->execute();
+        $this->dataList = $statement->fetch(\PDO::FETCH_ASSOC);
+        return true;
+    }
     public function rules(): array
     {
         return [];
