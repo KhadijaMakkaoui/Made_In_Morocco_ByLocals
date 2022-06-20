@@ -1,13 +1,14 @@
 <?php
 
+use app\models\User;
 use app\core\Application;
 use app\controllers\AuthController;
 use app\controllers\AvisController;
-use app\controllers\CommandeController;
 use app\controllers\HomeController;
-use app\controllers\ProductController;
 use app\controllers\SiteController;
-use app\models\User;
+use app\controllers\PanierController;
+use app\controllers\ProductController;
+use app\controllers\CommandeController;
 
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -43,9 +44,6 @@ $app->router->post('/boutique',[SiteController::class, 'boutique']);
 
 $app->router->get('/registerVendeur',[AuthController::class, 'register']);
 $app->router->post('/registerVendeur',[AuthController::class, 'register']);
-
-$app->router->get('/panier',[SiteController::class, 'panier']);
-$app->router->post('/panier',[SiteController::class, 'panier']);
 
 $app->router->get('/wishList',[SiteController::class, 'wishList']);
 $app->router->post('/wishList',[SiteController::class, 'wishList']);
@@ -99,6 +97,12 @@ $app->router->post('/dashHome',[HomeController::class, 'dashHome']);
 //Boutique page
 $app->router->get('/boutique',[HomeController::class, 'boutique']);
 $app->router->post('/boutique',[HomeController::class, 'boutique']);
+//Panier page
+$app->router->get('/panier',[PanierController::class, 'panier']);
+$app->router->post('/panier',[PanierController::class, 'panier']);
+//Panier delete
+$app->router->get('/delete',[PanierController::class, 'delete']);
+$app->router->post('/delete',[PanierController::class, 'delete']);
 
 
 $app->run();

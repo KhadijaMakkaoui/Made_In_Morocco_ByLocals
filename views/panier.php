@@ -15,80 +15,56 @@
             <div class="vos-selct col-lg-8">
                 <h3 class="fw-light">VOS SELECTIONS</h3>
                 <hr>
+               
+                 <?php foreach($panier as $p): 
+                            $obj_product->select($p['fk_produit']);
+                            $product=$obj_product->dataList;
+                            $obj_image->select($product['fk_image']);
+                            $img=$obj_image->dataList;
+                           ?>
                 <!-- article -->
                 <div class="article row mb-4">
+                
                     <!-- image -->
                     <div class="col-sm-12 col-md-4 mt-3" style=" width: 18rem; ">
-                        <img class="img-fluid rounded" src="../public/Assets/images/tapis-fes.jpg" alt="">
+                        <img class="img-fluid rounded" src="/files/<?php echo $img['chemin']?>" alt="">
                     </div>
                     <!-- Deatails cart -->
                     <div class="card border-0 col-sm-12 col-md-8 mt-3 " style="width:20rem">
                         <div class="card-body text-break">
-                            <h5 class="card-title">Tapis berbère noire et blanc</h5>
+                            <h5 class="card-title"><?php echo $product['titre'] ?></h5>
                             <div class="card-text">
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien
+                                <p> 
+                                <?php echo $product['description'] ?>
                                 </p>
                                 <div class="qte">
                                     <span>Quantité </span>
-                                    <span>
-                                            <select name="quantite" id="">
-                                                <option value=""></option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                            </select>
-                                        </span>
+                                    <!-- quantite commander -->
+                                    <input type="number" readonly="true" min="1" max="<?php echo  $product['quantite'] ?>" id="quantite_panier" value="<?php echo  $p['quantite'] ?>"/>
                                 </div>
                                 <div>Prix
-                                    <span class="price">550 DH</span>
+                                    <span class="price"><?php echo $product['prix'] ?> DH</span>
                                 </div>
                             </div>
-                            <a href="#" class="card-link me-2">Supprimer </a>
-                            <a href="#" class="card-link">Détails</a>
+                            <div>
+                                <span>Subtotal : </span>
+                                <?php echo $total=(int)$p['quantite']*(float)$product['prix'] ?> DH 
+                                <?php $total+= (int)$p['quantite']*(float)$product['prix'] ?>
+                            </div>
+                            <a href="/delete?id=<?php echo $p['id'] ?>" class="card-link me-2">Supprimer </a>
+                            <!-- <a href="/productDetails?id=<?php #echo $product['id']?>" class="card-link">Modifier</a> -->
                         </div>
                     </div>
                 </div>
-                <!-- article -->
-                <div class="article row mb-4">
-                    <!-- image -->
-                    <div class="col-sm-12 col-md-4 mt-3" style=" width: 18rem; ">
-                        <img class="img-fluid rounded" src="/Assets/images/tapis-fes.jpg" alt="">
-                    </div>
-                    <!-- Deatails cart -->
-                    <div class="card border-0 col-sm-12 col-md-8 mt-3 " style="width:20rem">
-                        <div class="card-body text-break">
-                            <h5 class="card-title">Tapis berbère noire et blanc</h5>
-                            <div class="card-text">
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien
-                                </p>
-                                <div class="qte">
-                                    <span>Quantité </span>
-                                    <span>
-                                            <select name="quantite" id="">
-                                                <option value=""></option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                            </select>
-                                        </span>
-                                </div>
-                                <div>Prix
-                                    <span class="price">550 DH</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-link me-2">Supprimer </a>
-                            <a href="#" class="card-link">Détails</a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <!-- Recap de la commande -->
-            <div class=" text-break fourth-color shadow fw-light p-3 col-lg-4 " style=" height: 20rem; ">
+            <form method="post" class=" text-break fourth-color shadow fw-light p-3 col-lg-4 " style=" height: 20rem; ">
                 <h5 class="title ">récapitulatif de la commande</h5>
                 <hr class="m-1">
                 <div class="d-flex flex-row justify-content-between">
                     <div class=" ">Total</div>
-                    <div class="">100 DH</span>
+                    <div class=""><?php echo $total??0 ?> DH</span>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between ">
@@ -97,7 +73,9 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between ">
                     <div class=" ">Total séstimé</div>
-                    <div class="fw-bold fs-4 ">100 <span>DH</span></div>
+                    <div class="fw-bold fs-4 ">
+                        <?php echo $total??0 ?> <span>DH</span>
+                    </div>
                 </div>
                 <!-- Details -->
                 <div class=" ">
@@ -108,8 +86,10 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-outline-dark ">COMMANDER</button>
+                    <button type="submit" class="btn btn-outline-dark ">COMMANDER</button>
                 </div>
-            </div>
+                 </form>
         </div>
     </main>
+<script src="/Assets/js/produitDetails.js"></script>
+

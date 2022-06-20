@@ -1,5 +1,5 @@
 var quantite_stock = document.getElementById('quantite_produit').innerHTML;
-// alert(quantite_stock);
+var quantite_choisie = document.getElementById('hide_quantite');
 
 function increaseCount(a, b) {
     var input = b.previousElementSibling;
@@ -8,6 +8,7 @@ function increaseCount(a, b) {
         value = isNaN(value) ? 0 : value;
         value++;
         input.innerText = value;
+        quantite_choisie.value = value;
     }
 }
 
@@ -18,5 +19,7 @@ function decreaseCount(a, b) {
         value = isNaN(value) ? 0 : value;
         value--;
         input.innerText = value;
+        quantite_choisie.value = value;
+
     }
 }

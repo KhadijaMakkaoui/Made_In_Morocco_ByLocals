@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\core\Request;
 use app\models\Image;
 use app\core\Response;
+use app\models\Panier;
 use app\models\Region;
 use app\models\Produit;
 use app\core\Controller;
@@ -222,7 +223,7 @@ class ProductController extends Controller
     /**
      * Afficher la page des details du produit séléctionner
      */
-    public function productDetails()
+    public function productDetails(Request $request)
     {
         $product = new Produit();
         $obj_product = $product;
@@ -235,22 +236,51 @@ class ProductController extends Controller
         $data=new UserData();
         $image=new Image();
         $region=new Region();
-      
-        if ($product->select($_GET['id'])){
-            $dataList=$product->dataList;
-            
-            return $this->render('productDetails', [
-                'product' => $dataList ,
-                'p' => $product,
-                'categorie' => $categorie,
-                'fabriquant' => $fabriquant,
-                'fab_data' => $fab_data,
-                'userData' =>$data,
-                'obj_image' => $image,
-                'region' => $region,
-                'obj_product' => $obj_product
-            ]);
+        $panier=new Panier();
+
+        if ($request->isGet()){
+            if ($product->select($_GET['id'])){
+                $dataList=$product->dataList;
+                
+                return $this->render('productDetails', [
+                    'product' => $dataList ,
+                    'p' => $product,
+                    'categorie' => $categorie,
+                    'fabriquant' => $fabriquant,
+                    'fab_data' => $fab_data,
+                    'userData' =>$data,
+                    'obj_image' => $image,
+                    'region' => $region,
+                    'obj_product' => $obj_product
+                ]);
+            }
+        }
+        if($request->isPost())
+        {
+            $panier->selectAll();
+            $data=$panier->dataList;
+            $panier->loadData($request->getBody());
+            //$exist_product=$product->select($panier->fk_produit);
+            // var_dump($exist_product);
+            // if(!$exist_product){
+                if ($panier->save()){
+                    Application::$app->session->setFlash('success', 'Produit ajouter avec succès dans votre panier');
+                    // $id_inserted=$image->getLastInsetedId();
+                    // $isImageUploaded=true;
+                    return $this->render("index");
+    
+                }
+            // }
+            // else{
+            //     echo "exist";
+                // if ($panier->update()){
+                //     Application::$app->session->setFlash('success', 'Produit ajouter avec succès dans votre panier');
+                //     // $id_inserted=$image->getLastInsetedId();
+                //     // $isImageUploaded=true;
+                //     return $this->render("/panier");
+    
+                // }
+            }
         }
     }
     
-}
