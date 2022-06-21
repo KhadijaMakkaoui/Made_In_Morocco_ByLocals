@@ -29,7 +29,7 @@ class AuthController extends Controller{
                     $response->redirect('/boutique');
                 }
                 
-                return;
+               
             }
         }
         $this->setLayout('main');
