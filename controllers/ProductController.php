@@ -248,7 +248,6 @@ class ProductController extends Controller
                     'categorie' => $categorie,
                     'fabriquant' => $fabriquant,
                     'fab_data' => $fab_data,
-                    'userData' =>$data,
                     'obj_image' => $image,
                     'region' => $region,
                     'obj_product' => $obj_product

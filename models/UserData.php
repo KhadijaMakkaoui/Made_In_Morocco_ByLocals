@@ -50,11 +50,18 @@ class UserData extends DbModel
         return parent::selectAll();
     }
 
-    public function select(int $id)
+    public function select($id)
     {
         return parent::select($id);
     }
-
+    public function selectByAccount($id_account)
+    {
+        $tableName = $this->tableName();
+        $statement = self::prepareIt("SELECT * FROM $tableName where fk_account = $id_account");
+        $statement->execute();
+        // $this->dataList = $statement->fetch(\PDO::FETCH_ASSOC);
+        return $statement->fetch(\PDO::FETCH_ASSOC);;
+    }
     public function delete(int $id)
     {
         return parent::delete($id);

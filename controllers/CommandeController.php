@@ -101,18 +101,6 @@ class CommandeController extends Controller
         ]);    
     }
 
-    
-
-    // public function getTeacher()
-    // {
-    //     $commande = new TeacherModel();
-    //     if ($commande->select($commande->id)){
-    //         return $this->render('commande', [
-    //             'model' =>  $commande->dataList
-    //         ]);
-    //     }
-    // }
-
     public function delete(Request $request)
     {
         $commande = new Commande();

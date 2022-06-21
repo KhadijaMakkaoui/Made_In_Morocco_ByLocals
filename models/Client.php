@@ -61,18 +61,7 @@ class Client extends DbModel
    }
     public function rules(): array
     {
-        return [
-    //         'matricule' => [self::RULE_REQUIRED, [
-    //             self::RULE_UNIQUE, 'class' => self::class
-    //         ]],            
-    //         'firstname' => [self::RULE_REQUIRED],
-    //         'lastname' => [self::RULE_REQUIRED],
-    //         'gender' => [self::RULE_REQUIRED],
-    //         'matiere' => [self::RULE_REQUIRED],
-    //         'phone' => [self::RULE_REQUIRED,[
-    //             self::RULE_UNIQUE, 'class' => self::class
-    //         ]],  
-        ];
+        return [];
     }
 
 }

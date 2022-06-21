@@ -1,10 +1,9 @@
-<?php #var_dump($product);exit;
-$fab=  $fabriquant->select($product['fk_fabriquant']);
+<?php 
+
+$fabriquant->select($product['fk_fabriquant']);
 $fab=  $fabriquant->dataList;
-// var_dump($fab);exit;
-$fab_data->select($fab['fk_account']);
-// var_dump($fab_data); exit;
-$data_fab=$fab_data->dataList;
+
+$data_fab=$fab_data->selectByAccount($fab['fk_account']);
 //img produit
 $fk_img=(int) $product['fk_image'];
 $obj_image->select($fk_img);
@@ -18,7 +17,6 @@ $fab_img=$obj_image->dataList;
 
 $reg=$region->GetRegionByVille($data_fab['fk_ville']);
 
-// var_dump($data_fab);
 ?>
 <div class="row product-Page">
     <!--product details-->
@@ -69,12 +67,8 @@ $reg=$region->GetRegionByVille($data_fab['fk_ville']);
                                     <input type="hidden" id="hide_quantite" name="quantite" value="1"/>
                             </div>
                             <input type="hidden" id="" name="fk_produit" value="<?php echo $_GET['id'] ?>"/>
-                            <input type="text" id="" name="fk_client" value="<?php echo $_SESSION['client_id'] ?>"/>
+                            <input type="hidden" id="" name="fk_client" value="<?php echo $_SESSION['client_id'] ?>"/>
  
-                            <!-- btn panier -->
-                            <!-- <a href="/panier?id=<?php echo  $product['id'] ?>&cat=<?php echo  $_GET['cat'] ?>" class="btn btn-outline-dark title col-lg-7">
-                                ajouter au panier
-                            </a> -->
                             <input type="submit" value="ajouter au panier" class="btn btn-outline-dark title col-lg-7" />
 
                         </div>

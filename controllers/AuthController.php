@@ -1,11 +1,11 @@
 <?php
 namespace app\controllers;
 
+use app\models\User;
 use app\core\Request;
-use app\core\Response;
 // use app\models\User;
+use app\core\Response;
 use app\models\Client;
-use app\models\Account;
 use app\core\Controller;
 use app\core\Application;
 use app\models\LoginForm;
@@ -23,12 +23,13 @@ class AuthController extends Controller{
             $loginForm->loadData($request->getBody());
             if($loginForm->validate() && $loginForm->login()){
                 if($fabriqant->getLoggedFabriquant()){
+                    // var_dump($fabriqant->getLoggedFabriquant());exit;
                     $response->redirect('/dashHome');
                 }else if($client->getLoggedClient()){
                     $response->redirect('/boutique');
                 }
                 
-                return;
+               
             }
         }
         $this->setLayout('main');
@@ -38,7 +39,7 @@ class AuthController extends Controller{
     }
     public function register(Request $request){
         
-        $account = new Account();
+        $account = new User();
         
         if($request->isPost()){
            $account->loadData($request->getBody());

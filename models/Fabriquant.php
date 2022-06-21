@@ -48,12 +48,8 @@ class Fabriquant extends DbModel
         $statement->execute();
         $result = $statement->fetch(\PDO::FETCH_ASSOC);
         $_SESSION['fabriquant_id']=$result['id'];
-        return true;
+        return $result;
    }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {

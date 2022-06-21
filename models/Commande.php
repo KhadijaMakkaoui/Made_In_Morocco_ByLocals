@@ -40,10 +40,6 @@ class Commande extends DbModel
     {
         return parent::selectAll();
     }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {

@@ -1,4 +1,4 @@
-
+<?php var_dump($_SESSION['client_id']); ?>
     <main class="categories ">
         <!-- heading -->
         <div class="section-image image-head text-center ">
