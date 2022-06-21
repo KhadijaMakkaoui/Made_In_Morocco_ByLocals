@@ -32,17 +32,6 @@ class User extends UserModel
             'password' => 'Mot de passe',
             'confirmPassword'  => 'Confirmation du mot de passe'];
     }
-    public function setRole(){
-        $role=new Role();
-        // $role->selectAll();
-        // $role=$role->dataList;
-
-        // if($_SERVER['REQUEST_URI']=="/register"){
-        //     $role =$role->findOneN(['role' => 'client'],'roles');
-        //     echo $role->id;
-        //     exit;
-        // }
-    }
 
     public function save(){
         $this->password = password_hash($this->password,PASSWORD_DEFAULT);        

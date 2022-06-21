@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="Assets/css/style.css">
 
-    <title></title>
+    <title>Made In Morocco store</title>
 </head>
 
 <body>

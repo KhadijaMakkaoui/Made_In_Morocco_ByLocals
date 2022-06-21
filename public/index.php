@@ -27,10 +27,10 @@ $config=[
 
 $app=new Application(dirname(__DIR__),$config);
 
-$app->router->get('/',[SiteController::class, 'home']);
+$app->router->get('/',[HomeController::class, 'home']);
 
-$app->router->get('/contact/{id}',[SiteController::class, 'contact']);
-$app->router->post('/contact',[SiteController::class, 'handleContact']);
+$app->router->get('/contact',[HomeController::class, 'contact']);
+$app->router->post('/contact',[HomeController::class, 'handleContact']);
 
 $app->router->get('/login',[AuthController::class, 'login']);
 $app->router->post('/login',[AuthController::class, 'login']);
@@ -39,14 +39,14 @@ $app->router->post('/register',[AuthController::class, 'register']);
 
 $app->router->get('/logout',[AuthController::class, 'logout']);
 
-$app->router->get('/boutique',[SiteController::class, 'boutique']);
-$app->router->post('/boutique',[SiteController::class, 'boutique']);
+$app->router->get('/boutique',[HomeController::class, 'boutique']);
+$app->router->post('/boutique',[HomeController::class, 'boutique']);
 
 $app->router->get('/registerVendeur',[AuthController::class, 'register']);
 $app->router->post('/registerVendeur',[AuthController::class, 'register']);
 
-$app->router->get('/wishList',[SiteController::class, 'wishList']);
-$app->router->post('/wishList',[SiteController::class, 'wishList']);
+$app->router->get('/wishList',[HomeController::class, 'wishList']);
+$app->router->post('/wishList',[HomeController::class, 'wishList']);
 
 $app->router->get('/dashHome',[ProductController::class, 'dashHome']);
 

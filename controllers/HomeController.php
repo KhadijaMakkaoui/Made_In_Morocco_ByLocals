@@ -29,8 +29,9 @@ class HomeController extends Controller
                 'Nbavis' => $avis->count()
             ]);
         }
-     }
-    public function boutique()
+    }
+    
+     public function boutique()
     {
         $product =new Produit();
         $obj_product = $product;
@@ -45,7 +46,24 @@ class HomeController extends Controller
             ]);
         }
 
-     }
+    }
+     public function home(){
+        // $params=[
+        //     'name'=>"Khadija"
+        // ];
+        return $this->render('index');
+        // return Application::$app->router->renderView('home',$params);
+    }
+
+    public function contact(){
+        return $this->render('contact');
+                // return Application::$app->router->renderView('contact');
+    }
+
+    public function wishList(){
+        return $this->render('wishList');
+        return Application::$app->router->renderView('contact');
+    }
 
 
 

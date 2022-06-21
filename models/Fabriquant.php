@@ -50,10 +50,6 @@ class Fabriquant extends DbModel
         $_SESSION['fabriquant_id']=$result['id'];
         return $result;
    }
-    // public function selectAll($attr=[])
-    // {
-    //     return parent::selectAll();
-    // }
 
     public function select(int $id)
     {
